@@ -46,11 +46,11 @@ class Menu extends Conexion {
                 if ($resultados['Count'] > 0)
                 {
                     echo '<li class="dropdown">
-                          <a href="'.$resultados['link'].'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.$resultados['Nombre'].' <span class="caret"></span></a>
+                          <a href="'.$resultados['Link'].'" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.$resultados['Nombre'].' <span class="caret"></span></a>
                           <ul class="dropdown-menu">';
 
                     $obj_menu = new Menu();
-                    $obj_menu->GeneraMenu($resultados["RecursoID"], $level +1);
+                    $obj_menu->GeneraMenu($resultados["RecursoID"], $level +1,$user);
                     $obj_menu->desconectar();
 
                     echo '</ul></li>';

@@ -10,6 +10,7 @@
  * @version    $Id:$
  */
 
+require_once  "db.inc.php";
 class Conexion {
 
    private $conexion;

@@ -1,5 +1,0 @@
-{
-    "require": {
-        "curiouscoder/telegram-php-bot": "dev-master"
-    }
-}
