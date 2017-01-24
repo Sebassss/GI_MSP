@@ -1,6 +1,6 @@
 <?php
 
-require_once "../../core/db/class.conexion.php";
+require_once "../../../core/db/class.conexion.php";
 
 if(isset($_POST['pagesize']))
 {

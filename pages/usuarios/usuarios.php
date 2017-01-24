@@ -27,12 +27,12 @@
             {index : "FechaRegistro", name: "FechaRegistro",editable: "true", visible: "true", type: "text", maxlength: "10", required: "true"}];
 
 
-        var edit_options ={	url: "edit.php",titulo: "Editar",method : "UPDATE" };
-        var add_options ={ url: "edit.php",titulo: "Agregar",method : "POST" };
-        var del_options ={ url: "edit.php",titulo: "Eliminar",method : "DELETE"};
+        var edit_options ={	url: "pages/usuarios/crud/edit.php",titulo: "Editar",method : "UPDATE" };
+        var add_options ={ url: "pages/usuarios/crud/add.php",titulo: "Agregar",method : "POST" };
+        var del_options ={ url: "pages/usuarios/crud/del.php",titulo: "Eliminar",method : "DELETE"};
 
         var datasource ={
-            url: "pages/crud/list.php",
+            url: "pages/usuarios/crud/list.php",
             method : "GET",
             datatype: "json",
             pagesize: 10,
