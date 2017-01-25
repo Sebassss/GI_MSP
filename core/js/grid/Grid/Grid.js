@@ -485,13 +485,13 @@ function loadScript(url, callback)
 		                                        html += '<h4>'+obj.add_options.titulo+'</h4>'
 												html += '<div id="resulttxt" name="resulttxt"  style="display:none;text-align:center"></div>'
 		                                        html += '</div>';
-		                                        html += '<div class="modal-body">';
+		                                        html += '<div class="modal-body" style="height:400px; overflow:auto">';
 		                                        html += '<form id="'+id+'_form" action="#" method="post">';
 		                                        /****/
                                                 var display;
 		                                        for(i=0;i<obj.Columnas.length;i++)
 		                                        {
-		                                            switch(obj.Columnas[i].type)
+		                                            switch(obj.Columnas[i].type[0])
 		                                            {
 		                                                case "text":
 		                                                {
@@ -517,6 +517,45 @@ function loadScript(url, callback)
                                                                 html += "</div>"
 
 		                                                }break;
+
+                                                        case "dropdown":
+                                                        {
+
+                                                            if(obj.Columnas[i].editable !="true")
+                                                            {
+                                                                display = "display:none";
+                                                            }
+                                                            else
+                                                            {
+                                                                display = "";
+                                                            }
+
+                                                            var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
+                                                            html += "<div class='form-group' style='"+display+"'>"
+                                                            html += "  <label for='"+id+"_field_"+obj.Columnas[i].index+"'>"+obj.Columnas[i].name+":</label>"
+                                                            html += "  <select  class='form-control' name='" + id + "_field_" + obj.Columnas[i].index + "'  id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" />"
+                                                            html += "</div>"
+
+
+                                                        }break;
+
+                                                        case "password":
+                                                        {
+                                                            if(obj.Columnas[i].editable !="true")
+                                                            {
+                                                                display = "display:none";
+                                                            }
+                                                            else
+                                                            {
+                                                                display = "";
+                                                            }
+
+                                                            var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
+                                                            html += "<div class='form-group' style='"+display+"'>"
+                                                            html += "  <label for='"+id+"_field_"+obj.Columnas[i].index+"'>"+obj.Columnas[i].name+":</label>"
+                                                            html += "  <input type='"+obj.Columnas[i].type+"' class='form-control' name='" + id + "_field_" + obj.Columnas[i].index + "'  id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" >"
+                                                            html += "</div>"
+                                                        }
 		                                            }
 		                                        }
 		                                        /****/
@@ -532,6 +571,34 @@ function loadScript(url, callback)
 		                                        html += '</div>';  // modalWindow
 		                                        $('body').append(html);
 
+                                                for(i=0;i<obj.Columnas.length;i++)
+                                                {
+                                                        if ($("#" + id + "_field_" + obj.Columnas[i].index).prop('nodeName') == 'SELECT')
+                                                        {
+                                                            var campo = obj.Columnas[i].index;
+                                                            var dato = "";//data[i];
+                                                            $.ajax({
+                                                                url: obj.Columnas[i].type[1],
+                                                                dataType: "json",
+                                                                method: "post",
+                                                                success: function (response) {
+
+                                                                    console.dir(dato)
+                                                                    for (var k in response) {
+                                                                        if (dato == response[k].value) {
+                                                                            $("#" + id + "_field_" + campo).append("<option selected value='" + response[k].value + "'>" + response[k].text + "</option>")
+                                                                        }
+                                                                        else {
+                                                                            $("#" + id + "_field_" + campo).append("<option value='" + response[k].value + "'>" + response[k].text + "</option>")
+                                                                        }
+                                                                    }
+                                                                },
+                                                                error: function (error) {
+                                                                    $("#" + id + "_field_" + campo).append("<option>Error</option>")
+                                                                }
+                                                            })
+                                                        }
+                                                }
 
                                         		$("#btnGuardar").click(function(){
 
@@ -558,7 +625,7 @@ function loadScript(url, callback)
 			                                        html += '<h4>'+obj.edit_options.titulo+'</h4>'
                                                     html += '<div id="resulttxt" name="resulttxt"  style="display:none;text-align:center"></div>'
 			                                        html += '</div>';
-			                                        html += '<div class="modal-body">';
+			                                        html += '<div class="modal-body" style="height:400px; overflow:auto">';
 			                                        html += '<form id="'+id+'_form" action="#" method="post">';
 			                                        /****/
 
@@ -607,6 +674,24 @@ function loadScript(url, callback)
 
 
                                                             }break;
+
+                                                            case "password":
+                                                            {
+                                                                if(obj.Columnas[i].editable !="true")
+                                                                {
+                                                                    display = "display:none";
+                                                                }
+                                                                else
+                                                                {
+                                                                    display = "";
+                                                                }
+
+                                                                var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
+                                                                html += "<div class='form-group' style='"+display+"'>"
+                                                                html += "  <label for='"+id+"_field_"+obj.Columnas[i].index+"'>"+obj.Columnas[i].name+":</label>"
+                                                                html += "  <input type='"+obj.Columnas[i].type+"' class='form-control' name='" + id + "_field_" + obj.Columnas[i].index + "'  id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" >"
+                                                                html += "</div>"
+                                                            }
 			                                            }
 			                                        }
 			                                        /****/
@@ -631,23 +716,32 @@ function loadScript(url, callback)
                                                         }
                                                         else
                                                         {
+
                                                             var campo = obj.Columnas[i].index;
+                                                            var dato = data[i];
                                                             $.ajax({
                                                                 url: obj.Columnas[i].type[1],
                                                                 dataType: "json",
                                                                 method: "post",
                                                                 success: function(response)
                                                                 {
-                                                                    console.dir(response);
-                                                                    console.log($("#" + id + "_field_" + campo));
-                                                                    for(var  k in response) {
 
-                                                                        $("#" + id + "_field_" + campo).append("<option>"+response[k].Nombre+"</option>")
+                                                                    console.dir(dato)
+                                                                    for(var  k in response)
+                                                                    {
+                                                                        if(dato == response[k].value)
+                                                                        {
+                                                                            $("#" + id + "_field_" + campo).append("<option selected value='" + response[k].value + "'>" + response[k].text + "</option>")
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            $("#" + id + "_field_" + campo).append("<option value='" + response[k].value + "'>" + response[k].text + "</option>")
+                                                                        }
                                                                     }
                                                                 },
-                                                                error: function (error)
+                                                                error: function(error)
                                                                 {
-                                                                    $("#" + id + "_field_" + obj.Columnas[i].index).html("<option>"+error+"</option>")
+                                                                    	$("#" + id + "_field_" + campo).append("<option>Error</option>")
                                                                 }
                                                             })
 
@@ -682,14 +776,14 @@ function loadScript(url, callback)
 			                                        html += '<h4>'+obj.del_options.titulo+'</h4>'
                                                     html += '<div id="resulttxt" name="resulttxt"  style="display:none;text-align:center"></div>'
 			                                        html += '</div>';
-			                                        html += '<div class="modal-body">';
+			                                        html += '<div class="modal-body" style="height:400px; overflow:auto">';
 			                                        html += '<form id="'+id+'_form" action="#" method="post">';
 			                                        /****/
 
 			                                        var display;
 			                                        for(i=0;i<obj.Columnas.length;i++)
 			                                        {
-			                                            switch(obj.Columnas[i].type)
+			                                            switch(obj.Columnas[i].type[0])
 			                                            {
 			                                                case "text":
 			                                                {
@@ -708,6 +802,45 @@ function loadScript(url, callback)
                                                                     html += "</div>"
 
 			                                                }break;
+
+                                                            case "dropdown":
+                                                            {
+
+                                                                if(obj.Columnas[i].editable !="true")
+                                                                {
+                                                                    display = "display:none";
+                                                                }
+                                                                else
+                                                                {
+                                                                    display = "";
+                                                                }
+
+                                                                var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
+                                                                html += "<div class='form-group' style='"+display+"'>"
+                                                                html += "  <label for='"+id+"_field_"+obj.Columnas[i].index+"'>"+obj.Columnas[i].name+":</label>"
+                                                                html += "  <select class='form-control' name='" + id + "_field_" + obj.Columnas[i].index + "'  id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" />"
+                                                                html += "</div>"
+
+
+                                                            }break;
+
+                                                            case "password":
+                                                            {
+                                                                if(obj.Columnas[i].editable !="true")
+                                                                {
+                                                                    display = "display:none";
+                                                                }
+                                                                else
+                                                                {
+                                                                    display = "";
+                                                                }
+
+                                                                var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
+                                                                html += "<div class='form-group' style='"+display+"'>"
+                                                                html += "  <label for='"+id+"_field_"+obj.Columnas[i].index+"'>"+obj.Columnas[i].name+":</label>"
+                                                                html += "  <input readonly type='"+obj.Columnas[i].type+"' class='form-control' name='" + id + "_field_" + obj.Columnas[i].index + "'  id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" >"
+                                                                html += "</div>"
+                                                            }
 			                                            }
 			                                        }
 			                                        /****/
@@ -723,10 +856,47 @@ function loadScript(url, callback)
 			                                        html += '</div>';  // modalWindow
 			                                        $('body').prepend(html);
 
-	                                        		for(i=0;i<data.length;i++)
-	                                        		{
-	                                        			$("#"+id+"_field_"+obj.Columnas[i].index).val(data[i]);
-	                                        		}
+                                                    for(i=0;i<data.length;i++)
+                                                    {
+                                                        if($("#"+id+"_field_"+obj.Columnas[i].index).prop('nodeName') == 'INPUT')
+                                                        {
+                                                            $("#" + id + "_field_" + obj.Columnas[i].index).val(data[i]);
+                                                        }
+                                                        else
+                                                        {
+
+                                                            var campo = obj.Columnas[i].index;
+                                                            var dato = data[i];
+                                                            $.ajax({
+                                                                url: obj.Columnas[i].type[1],
+                                                                dataType: "json",
+                                                                method: "post",
+                                                                success: function(response)
+                                                                {
+
+
+                                                                    $("#" + id + "_field_" + campo).prop('disabled', true);
+                                                                    for(var  k in response)
+                                                                    {
+                                                                        if(dato == response[k].value)
+                                                                        {
+                                                                            $("#" + id + "_field_" + campo).append("<option selected value='" + response[k].value + "'>" + response[k].text + "</option>")
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            $("#" + id + "_field_" + campo).append("<option value='" + response[k].value + "'>" + response[k].text + "</option>")
+                                                                        }
+                                                                    }
+                                                                },
+                                                                error: function(error)
+                                                                {
+                                                                    $("#" + id + "_field_" + campo).append("<option>Error</option>")
+                                                                }
+                                                            })
+
+                                                        }
+
+                                                    }
 
 	                                        		$("#btnGuardar").click(function(){
 	                                        			var params = $.extend ($(this),obj);

@@ -10,13 +10,13 @@ require_once "../../../core/db/class.conexion.php";
 
 $db = new Conexion();
 
-$consulta = $db->query("select UsuarioId, Nombre from tbl_usuarios");
+$consulta = $db->query("select UsuarioID, Nombre from tbl_usuarios");
 
 $i=0;
 $x = array();
 while($row = $db->fetch_array($consulta))
 {
-    $x[$i] = $row;
+    $x[$i] =array("value" => $row['UsuarioID'], "text" => $row['Nombre']);
     $i++;
 }
 
