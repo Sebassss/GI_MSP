@@ -20,11 +20,14 @@
             {'delete': "true"}];
 
         var colheaders = [
-            {index : "UsuarioID", name: "id", editable: "false",  visible: "false", type: "text",placeholder:"", maxlength: "10", required: "false" },
-            {index : "Nombre", name: "Nombre",editable: "true", visible: "true", type: "text", maxlength: "25", required: "false" },
-            {index : "Email", name: "Email",editable: "true", visible: "true", type: "text", maxlength: "50", required: "true"},
-            {index : "Password", name: "Password",editable: "true", visible: "false", type: "text", maxlength: "10", required: "true"},
-            {index : "FechaRegistro", name: "FechaRegistro",editable: "false", visible: "true", type: "text", maxlength: "10", required: "true"}];
+            {index : "RecursoID", name: "RecursoID", editable: "false",  visible: "false", type: ["text"],placeholder:"", maxlength: "10", required: "false" },
+            {index : "UsuarioID", name: "UsuarioID",editable: "true", visible: "false", type: ["dropdown","pages/permisos/crud/usr.php"], maxlength: "25", required: "false" },
+            {index : "Nombre", name: "Nombre",editable: "true", visible: "true", type: ["text"], maxlength: "50", required: "true"},
+            {index : "Consultar", name: "Consultar",editable: "true", visible: "true", type: ["text"], maxlength: "10", required: "true"},
+            {index : "Agregar", name: "Agregar",editable: "true", visible: "true", type: ["text"], maxlength: "10", required: "true"},
+            {index : "Editar", name: "Editar",editable: "true", visible: "true", type: ["text"], maxlength: "10", required: "true"},
+            {index : "Eliminar", name: "Eliminar",editable: "true", visible: "true", type: ["text"], maxlength: "10", required: "true"},
+            {index : "Acceso", name: "Acceso",editable: "false", visible: "true", type: ["text"], maxlength: "10", required: "true"}];
 
 
         var edit_options ={	url: "pages/usuarios/crud/edit.php",titulo: "Editar",method : "POST" };
@@ -32,7 +35,7 @@
         var del_options ={ url: "pages/usuarios/crud/del.php",titulo: "Eliminar",method : "POST"};
 
         var datasource ={
-            url: "pages/usuarios/crud/list.php",
+            url: "pages/permisos/crud/list.php",
             method : "GET",
             datatype: "json",
             pagesize: 10,

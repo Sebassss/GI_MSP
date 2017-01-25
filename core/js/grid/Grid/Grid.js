@@ -112,8 +112,8 @@ function loadScript(url, callback)
 							case 1: /*Editar*/
     						{
     							$.ajax({
-	                        		type: "POST",
-			                        data: $(form).serialize(),
+	                        		type: obj.edit_options.method,
+			                        data: $("#"+form).serialize(),
 			                        url: obj.edit_options.url,
 									global:true,
                                     cache:false,
@@ -291,7 +291,7 @@ function loadScript(url, callback)
                                         {
                                         	//if(obj.Columnas[i].visible == "true")
                                         	//{
-                                            if(obj.Columnas[i].editable !="true")
+                                            if(obj.Columnas[i].visible !="true")
                                             {
                                                 display = "display:none";
                                             }
@@ -335,7 +335,7 @@ function loadScript(url, callback)
 	                                        		if(dataset.values[k].hasOwnProperty(t)==true)
 	                                        		{
 	                                        			cant_columns_query++;
-                                                        if(obj.Columnas[i].editable !="true")
+                                                        if(obj.Columnas[i].visible !="true")
                                                         {
                                                             display = "display:none";
                                                         }
@@ -488,14 +488,22 @@ function loadScript(url, callback)
 		                                        html += '<div class="modal-body">';
 		                                        html += '<form id="'+id+'_form" action="#" method="post">';
 		                                        /****/
-
+                                                var display;
 		                                        for(i=0;i<obj.Columnas.length;i++)
 		                                        {
 		                                            switch(obj.Columnas[i].type)
 		                                            {
 		                                                case "text":
 		                                                {
-                                                            if(obj.Columnas[i].editable =="true") {
+                                                            if(obj.Columnas[i].editable !="true")
+                                                            {
+                                                                display = "display:none";
+                                                            }
+                                                            else
+                                                            {
+                                                                display = "";
+                                                            }
+
                                                                 var required = (obj.Columnas[i].required == "true") ? 'required' : '';
                                                                 if (typeof(obj.Columnas[i].placeholder) == 'undefined') {
                                                                     placeholder = "";
@@ -503,11 +511,11 @@ function loadScript(url, callback)
                                                                 else {
                                                                     placeholder = obj.Columnas[i].placeholder;
                                                                 }
-                                                                html += "<div class='form-group'>"
-                                                                html += "  <label for='" + id + "_field_" + i + "'>" + obj.Columnas[i].name + ":</label>"
+                                                                html += "<div class='form-group' style='"+display+"'>"
+                                                                html += "  <label for='" + id + "_field_" + obj.Columnas[i].index + "'>" + obj.Columnas[i].name + ":</label>"
                                                                 html += "  <input type='" + obj.Columnas[i].type + "' class='form-control' value='' name='" + id + "_field_" + obj.Columnas[i].index + "' id='" + id + "_field_" + obj.Columnas[i].index + "' placeholder='" + placeholder + "' style='" + obj.Columnas[i].style + "' maxlength='" + obj.Columnas[i].maxlength + "' " + required + " >"
                                                                 html += "</div>"
-                                                            }
+
 		                                                }break;
 		                                            }
 		                                        }
@@ -557,7 +565,7 @@ function loadScript(url, callback)
                                                     var display;
 			                                        for(i=0;i<obj.Columnas.length;i++)
 			                                        {
-			                                            switch(obj.Columnas[i].type)
+			                                            switch(obj.Columnas[i].type[0])
 			                                            {
 			                                                case "text":
 			                                                {
@@ -573,11 +581,32 @@ function loadScript(url, callback)
 
 				                                                 	var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
 				                                                 	html += "<div class='form-group' style='"+display+"'>"
-				                                                 	html += "  <label for='"+id+"_field_"+i+"'>"+obj.Columnas[i].name+":</label>"
-				                                                 	html += "  <input type='"+obj.Columnas[i].type+"' class='form-control' id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" >"
+				                                                 	html += "  <label for='"+id+"_field_"+obj.Columnas[i].index+"'>"+obj.Columnas[i].name+":</label>"
+				                                                 	html += "  <input type='"+obj.Columnas[i].type+"' class='form-control' name='" + id + "_field_" + obj.Columnas[i].index + "'  id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" >"
 				                                                 	html += "</div>"
 
 			                                                }break;
+
+                                                            case "dropdown":
+                                                            {
+
+                                                                if(obj.Columnas[i].editable !="true")
+                                                                {
+                                                                    display = "display:none";
+                                                                }
+                                                                else
+                                                                {
+                                                                    display = "";
+                                                                }
+
+                                                                var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
+                                                                html += "<div class='form-group' style='"+display+"'>"
+                                                                html += "  <label for='"+id+"_field_"+obj.Columnas[i].index+"'>"+obj.Columnas[i].name+":</label>"
+                                                                html += "  <select  class='form-control' name='" + id + "_field_" + obj.Columnas[i].index + "'  id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" />"
+                                                                html += "</div>"
+
+
+                                                            }break;
 			                                            }
 			                                        }
 			                                        /****/
@@ -596,8 +625,35 @@ function loadScript(url, callback)
 			                                        //console.log(data)
 	                                        		for(i=0;i<data.length;i++)
 	                                        		{
-														$("#"+id+"_field_"+obj.Columnas[i].index).val(data[i]);
-	                                        		}
+	                                        		    if($("#"+id+"_field_"+obj.Columnas[i].index).prop('nodeName') == 'INPUT')
+                                                        {
+                                                            $("#" + id + "_field_" + obj.Columnas[i].index).val(data[i]);
+                                                        }
+                                                        else
+                                                        {
+                                                            var campo = obj.Columnas[i].index;
+                                                            $.ajax({
+                                                                url: obj.Columnas[i].type[1],
+                                                                dataType: "json",
+                                                                method: "post",
+                                                                success: function(response)
+                                                                {
+                                                                    console.dir(response);
+                                                                    console.log($("#" + id + "_field_" + campo));
+                                                                    for(var  k in response) {
+
+                                                                        $("#" + id + "_field_" + campo).append("<option>"+response[k].Nombre+"</option>")
+                                                                    }
+                                                                },
+                                                                error: function (error)
+                                                                {
+                                                                    $("#" + id + "_field_" + obj.Columnas[i].index).html("<option>"+error+"</option>")
+                                                                }
+                                                            })
+
+                                                        }
+
+                                                    }
 
 	                                        		$("#btnGuardar").click(function(){
 	                                        			var params = $.extend ($(this),obj);
@@ -647,7 +703,7 @@ function loadScript(url, callback)
                                                                 }
 				                                                    var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
                                                                     html += "<div class='form-group' style='"+display+"'>"
-                                                                    html += "  <label for='" + id + "_field_" + i + "'>" + obj.Columnas[i].name + ":</label>"
+                                                                    html += "  <label for='" + id + "_field_" + obj.Columnas[i].index + "'>" + obj.Columnas[i].name + ":</label>"
                                                                     html += "  <input readonly type='" + obj.Columnas[i].type + "' class='form-control' value='' name='" + id + "_field_" + obj.Columnas[i].index + "' id='" + id + "_field_" + obj.Columnas[i].index + "'  style='" + obj.Columnas[i].style + "' maxlength='" + obj.Columnas[i].maxlength + "' " + required + " >"
                                                                     html += "</div>"
 
