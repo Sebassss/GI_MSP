@@ -22,7 +22,7 @@
         var colheaders = [
             {index : "RecursoID", name: "RecursoID", editable: "false",  visible: "false", type: ["text"],placeholder:"", maxlength: "10", required: "false" },
             {index : "UsuarioID", name: "Usuario",editable: "true", visible: "false", type: ["dropdown","pages/permisos/crud/usr.php"], maxlength: "25", required: "false" },
-            {index : "Nombre", name: "Nombre",editable: "true", visible: "true", type: ["text"], maxlength: "50", required: "true"},
+            {index : "Nombre", name: "Usuario",editable: "false", visible: "true", type: ["text"], maxlength: "50", required: "true"},
             {index : "Consultar", name: "Consultar",editable: "true", visible: "true", type: ["text"], maxlength: "10", required: "true"},
             {index : "Agregar", name: "Agregar",editable: "true", visible: "true", type: ["text"], maxlength: "10", required: "true"},
             {index : "Editar", name: "Editar",editable: "true", visible: "true", type: ["text"], maxlength: "10", required: "true"},
