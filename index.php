@@ -67,9 +67,9 @@ $obj_permiso->desconectar();
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <strong>Interno Desarrollo </strong>msal@sanjuan.gob.ar
+                <strong>Interno Desarrollo: </strong>4305575
                 &nbsp;&nbsp;
-                <strong>Interno Soporte </strong>+54 0264 4305619
+                <strong>Interno Soporte: </strong>4305619
             </div>
 
         </div>

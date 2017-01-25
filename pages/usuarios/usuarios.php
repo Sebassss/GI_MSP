@@ -20,16 +20,16 @@
             {'delete': "true"}];
 
         var colheaders = [
-            {index : "UsuarioID", name: "id", editable: "true",  visible: "false", type: "text",placeholder:"", maxlength: "10", required: "false" },
-            {index : "Nombre", name: "Nombre",editable: "true", visible: "true", type: "text", maxlength: "10", required: "false" },
-            {index : "Email", name: "Email",editable: "true", visible: "true", type: "text", maxlength: "10", required: "true"},
-            {index : "Password", name: "Password",editable: "true", visible: "true", type: "text", maxlength: "10", required: "true"},
-            {index : "FechaRegistro", name: "FechaRegistro",editable: "true", visible: "true", type: "text", maxlength: "10", required: "true"}];
+            {index : "UsuarioID", name: "id", editable: "true",  visible: "true", type: "text",placeholder:"", maxlength: "10", required: "false" },
+            {index : "Nombre", name: "Nombre",editable: "true", visible: "true", type: "text", maxlength: "25", required: "false" },
+            {index : "Email", name: "Email",editable: "true", visible: "true", type: "text", maxlength: "50", required: "true"},
+            {index : "Password", name: "Password",editable: "true", visible: "false", type: "text", maxlength: "10", required: "true"},
+            {index : "FechaRegistro", name: "FechaRegistro",editable: "false", visible: "true", type: "text", maxlength: "10", required: "true"}];
 
 
         var edit_options ={	url: "pages/usuarios/crud/edit.php",titulo: "Editar",method : "UPDATE" };
         var add_options ={ url: "pages/usuarios/crud/add.php",titulo: "Agregar",method : "POST" };
-        var del_options ={ url: "pages/usuarios/crud/del.php",titulo: "Eliminar",method : "DELETE"};
+        var del_options ={ url: "pages/usuarios/crud/del.php",titulo: "Eliminar",method : "POST"};
 
         var datasource ={
             url: "pages/usuarios/crud/list.php",
@@ -37,7 +37,7 @@
             datatype: "json",
             pagesize: 10,
             paginate: "false",
-            fixedrows: "12"
+            fixedrows: "10"
         };
 
 

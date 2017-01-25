@@ -282,28 +282,36 @@ function loadScript(url, callback)
                     doTable : function(obj,dataset)
                               {
                                     var id = $(obj).attr("id");
-									
+									var display;
                                     var html = "<table id='"+id+"_table' class='table table-striped'><thead>"
 								  		html +="<div id="+id+"_buttons></div> <hr>"
                                         html +="<tr>"
                               			
                                         for(i=0;i<obj.Columnas.length; i++)
                                         {
-                                        	if(obj.Columnas[i].visible == "true")
-                                        	{
+                                        	//if(obj.Columnas[i].visible == "true")
+                                        	//{
+                                            if(obj.Columnas[i].editable !="true")
+                                            {
+                                                display = "display:none";
+                                            }
+                                            else
+                                            {
+                                                display = "";
+                                            }
+
                                         		if(obj.Columnas[i].index == criteria && criteria_flag==true)
                                         		{
-													html += "<th id="+id+"_header_"+obj.Columnas[i].index+"><img src='core/js/grid/Grid/inc/img/sort_desc.png'>"+obj.Columnas[i].name+"</th>";
+													html += "<th style='"+display+"' id="+id+"_header_"+obj.Columnas[i].index+"><img src='core/js/grid/Grid/inc/img/sort_desc.png'>"+obj.Columnas[i].name+"</th>";
                                         		}
                                         		else
                                         		{
-                                            		html += "<th id="+id+"_header_"+obj.Columnas[i].index+"><img src='core/js/grid/Grid/inc/img/sort_asc.png'>"+obj.Columnas[i].name+"</th>";
+                                            		html += "<th style='"+display+"' id="+id+"_header_"+obj.Columnas[i].index+"><img src='core/js/grid/Grid/inc/img/sort_asc.png'>"+obj.Columnas[i].name+"</th>";
                                             	}
-                                        	}
-                                        	else
-                                        	{
-                                        		html += "<th style=\"display:none\" >"+obj.Columnas[i].name+"</th>";	
-                                        	}
+                                        	//}
+                                        	//else
+                                        	////	html += "<th style=\"display:none\" >"+obj.Columnas[i].name+"</th>";
+                                        	//}
                                         }
 
 										html +="</tr>"
@@ -327,14 +335,15 @@ function loadScript(url, callback)
 	                                        		if(dataset.values[k].hasOwnProperty(t)==true)
 	                                        		{
 	                                        			cant_columns_query++;
-					                                    if(obj.Columnas[i].visible == "true")
-					                                    {
-					                                    	html+="<td>"+dataset.values[k][t]+"</td>"
-					                                    }
-					                                    else
-					                                    {
-					                                    	html+="<td style=\"display:none\">"+dataset.values[i][t]+"</td>"	
-					                                    }
+                                                        if(obj.Columnas[i].editable !="true")
+                                                        {
+                                                            display = "display:none";
+                                                        }
+                                                        else
+                                                        {
+                                                            display = "";
+                                                        }
+					                                    	html+="<td style='"+display+"'>"+dataset.values[k][t]+"</td>"
 				                                    }
 											}
 											html+="</tr>"
@@ -545,20 +554,29 @@ function loadScript(url, callback)
 			                                        html += '<form id="'+id+'_form" action="#" method="post">';
 			                                        /****/
 
+                                                    var display;
 			                                        for(i=0;i<obj.Columnas.length;i++)
 			                                        {
 			                                            switch(obj.Columnas[i].type)
 			                                            {
 			                                                case "text":
 			                                                {
-			                                                	if(obj.Columnas[i].editable =="true")
-			                                                	{
+
+                                                                if(obj.Columnas[i].editable !="true")
+                                                                {
+                                                                    display = "display:none";
+                                                                }
+                                                                else
+                                                                {
+                                                                    display = "";
+                                                                }
+
 				                                                 	var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
-				                                                 	html += "<div class='form-group'>"
+				                                                 	html += "<div class='form-group' style='"+display+"'>"
 				                                                 	html += "  <label for='"+id+"_field_"+i+"'>"+obj.Columnas[i].name+":</label>"
 				                                                 	html += "  <input type='"+obj.Columnas[i].type+"' class='form-control' id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" >"
 				                                                 	html += "</div>"
-			                                                 	}
+
 			                                                }break;
 			                                            }
 			                                        }
@@ -612,20 +630,27 @@ function loadScript(url, callback)
 			                                        html += '<form id="'+id+'_form" action="#" method="post">';
 			                                        /****/
 
+			                                        var display;
 			                                        for(i=0;i<obj.Columnas.length;i++)
 			                                        {
 			                                            switch(obj.Columnas[i].type)
 			                                            {
 			                                                case "text":
 			                                                {
-			                                                	if(obj.Columnas[i].editable =="true")
+			                                                	if(obj.Columnas[i].editable !="true")
 			                                                	{
+			                                                		display = "display:none";
+																}
+																else
+                                                                {
+                                                                    display = "";
+                                                                }
 				                                                    var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
-                                                                    html += "<div class='form-group'>"
+                                                                    html += "<div class='form-group' style='"+display+"'>"
                                                                     html += "  <label for='" + id + "_field_" + i + "'>" + obj.Columnas[i].name + ":</label>"
                                                                     html += "  <input readonly type='" + obj.Columnas[i].type + "' class='form-control' value='' name='" + id + "_field_" + obj.Columnas[i].index + "' id='" + id + "_field_" + obj.Columnas[i].index + "'  style='" + obj.Columnas[i].style + "' maxlength='" + obj.Columnas[i].maxlength + "' " + required + " >"
                                                                     html += "</div>"
-				                                            	}
+
 			                                                }break;
 			                                            }
 			                                        }
