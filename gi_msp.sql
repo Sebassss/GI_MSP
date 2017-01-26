@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-01-2017 a las 15:15:53
+-- Tiempo de generación: 26-01-2017 a las 18:03:26
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 7.0.10
 
@@ -23,13 +23,43 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbl_incidenteestado`
+--
+
+CREATE TABLE `tbl_incidenteestado` (
+  `IncidenteEstadoID` int(11) NOT NULL,
+  `Nombre` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tbl_incidenteestado`
+--
+
+INSERT INTO `tbl_incidenteestado` (`IncidenteEstadoID`, `Nombre`) VALUES
+(1, 'Abierto'),
+(2, 'Cerrado'),
+(3, 'Resuelto'),
+(4, 'Pendiente');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbl_incidenteprioridad`
 --
 
 CREATE TABLE `tbl_incidenteprioridad` (
   `IncidentePrioridadID` int(11) NOT NULL,
-  `Nombre` int(11) NOT NULL
+  `Nombre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tbl_incidenteprioridad`
+--
+
+INSERT INTO `tbl_incidenteprioridad` (`IncidentePrioridadID`, `Nombre`) VALUES
+(1, 'Bajo'),
+(2, 'Normal'),
+(3, 'Urgente');
 
 -- --------------------------------------------------------
 
@@ -43,18 +73,8 @@ CREATE TABLE `tbl_incidentes` (
   `Titulo` varchar(200) NOT NULL,
   `Detalles` longtext NOT NULL,
   `IncidenteEstadoID` int(11) NOT NULL,
+  `IncidentePrioridadID` int(11) NOT NULL,
   `FechaRegistro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbl_incidentestado`
---
-
-CREATE TABLE `tbl_incidentestado` (
-  `IncidenteEstadoID` int(11) NOT NULL,
-  `Nombre` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -172,7 +192,8 @@ CREATE TABLE `tbl_usuarios` (
 INSERT INTO `tbl_usuarios` (`UsuarioID`, `Nombre`, `Email`, `Password`, `FechaRegistro`) VALUES
 (3, 'Sebastian, Mendoza', 'pseba20@gmail.com', '202cb962ac59075b964b07152d234b70', '2017-01-11 00:00:00'),
 (8, 'Delgado, Rolando', 'rdel@gmai.com.ar', 'f4cc399f0effd13c888e310ea2cf5399', '2017-01-25 08:47:44'),
-(10, 'Ivan, Neira', 'ien1983@gmail.com', '202cb962ac59075b964b07152d234b70', '2017-01-26 12:09:29');
+(10, 'Ivan, Neira', 'ien1983@gmail.com', '202cb962ac59075b964b07152d234b70', '2017-01-26 12:09:29'),
+(11, 'Garcia, Paulo', 'a@a.com', '202cb962ac59075b964b07152d234b70', '2017-01-26 12:29:51');
 
 -- --------------------------------------------------------
 
@@ -192,11 +213,18 @@ CREATE TABLE `tbl_usuariosperfiles` (
 INSERT INTO `tbl_usuariosperfiles` (`UsuarioID`, `PerfilID`) VALUES
 (8, 4),
 (3, 3),
-(10, 3);
+(10, 3),
+(11, 3);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `tbl_incidenteestado`
+--
+ALTER TABLE `tbl_incidenteestado`
+  ADD PRIMARY KEY (`IncidenteEstadoID`);
 
 --
 -- Indices de la tabla `tbl_incidenteprioridad`
@@ -209,12 +237,6 @@ ALTER TABLE `tbl_incidenteprioridad`
 --
 ALTER TABLE `tbl_incidentes`
   ADD PRIMARY KEY (`IncidenteID`);
-
---
--- Indices de la tabla `tbl_incidentestado`
---
-ALTER TABLE `tbl_incidentestado`
-  ADD PRIMARY KEY (`IncidenteEstadoID`);
 
 --
 -- Indices de la tabla `tbl_perfiles`
@@ -252,20 +274,20 @@ ALTER TABLE `tbl_usuariosperfiles`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `tbl_incidenteestado`
+--
+ALTER TABLE `tbl_incidenteestado`
+  MODIFY `IncidenteEstadoID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT de la tabla `tbl_incidenteprioridad`
 --
 ALTER TABLE `tbl_incidenteprioridad`
-  MODIFY `IncidentePrioridadID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IncidentePrioridadID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `tbl_incidentes`
 --
 ALTER TABLE `tbl_incidentes`
   MODIFY `IncidenteID` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `tbl_incidentestado`
---
-ALTER TABLE `tbl_incidentestado`
-  MODIFY `IncidenteEstadoID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `tbl_perfiles`
 --
@@ -280,7 +302,7 @@ ALTER TABLE `tbl_personas`
 -- AUTO_INCREMENT de la tabla `tbl_usuarios`
 --
 ALTER TABLE `tbl_usuarios`
-  MODIFY `UsuarioID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'LLave primaria de la tabla', AUTO_INCREMENT=11;
+  MODIFY `UsuarioID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'LLave primaria de la tabla', AUTO_INCREMENT=12;
 --
 -- Restricciones para tablas volcadas
 --
