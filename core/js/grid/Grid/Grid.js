@@ -522,7 +522,7 @@ function loadScript(url, callback)
 												html += '<div id="resulttxt" name="resulttxt"  style="display:none;text-align:center"></div>'
 		                                        html += '</div>';
 		                                        html += '<div class="modal-body" style="height:400px; overflow:auto">';
-		                                        html += '<form id="'+id+'_form" action="#" method="post">';
+		                                        html += '<form id="'+id+'_form" action="#" method="post" autocomplete="off">';
 		                                        /****/
                                                 var display;
 		                                        for(i=0;i<obj.Columnas.length;i++)
@@ -644,7 +644,7 @@ function loadScript(url, callback)
                                                     html += '<div id="resulttxt" name="resulttxt"  style="display:none;text-align:center"></div>'
 			                                        html += '</div>';
 			                                        html += '<div class="modal-body" style="height:400px; overflow:auto">';
-			                                        html += '<form id="'+id+'_form" action="#" method="post">';
+			                                        html += '<form id="'+id+'_form" action="#" method="post" autocomplete="off">';
 			                                        /****/
 
                                                     var display;
@@ -774,7 +774,7 @@ function loadScript(url, callback)
                                                     html += '<div id="resulttxt" name="resulttxt"  style="display:none;text-align:center"></div>'
 			                                        html += '</div>';
 			                                        html += '<div class="modal-body" style="height:400px; overflow:auto">';
-			                                        html += '<form id="'+id+'_form" action="#" method="post">';
+			                                        html += '<form id="'+id+'_form" action="#" method="post" autocomplete="off">';
 			                                        /****/
 
 			                                        var display;

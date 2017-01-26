@@ -20,12 +20,12 @@
             {'delete': "false"}];
 
         var colheaders = [
-            {index : "IncidenteID", name: "IncidenteID", editable: "false",  visible: "false", type:[ "text"],placeholder:"", maxlength: "10", required: "false" },
-            {index : "UsuarioID", name: "UsuarioID",editable: "true", visible: "true", type: ["text"], maxlength: "25", required: "false" },
+            {index : "IncidenteID", name: "Incidente", editable: "false",  visible: "false", type:[ "text"],placeholder:"", maxlength: "10", required: "false" },
+            {index : "UsuarioID", name: "Usuario",editable: "true", visible: "true", type: ["text"], maxlength: "25", required: "false" },
             {index : "Titulo", name: "Titulo",editable: "true", visible: "true", type: ["text"], maxlength: "50", required: "true"},
             {index : "Detalles", name: "Detalles",editable: "true", visible: "false", type: ["password"], maxlength: "10", required: "true"},
-            {index : "IncidentePrioridadID", name: "IncidentePrioridadID",editable: "true", visible: "false", type: ["password"], maxlength: "10", required: "true"},
-            {index : "IncidenteEstadoID", name: "IncidenteEstadoID",editable: "false", visible: "true", type: ["text"], maxlength: "10", required: "true"}];
+            {index : "IncidentePrioridadID", name: "Prioridad",editable: "true", visible: "false", type: ["dropdown",'pages/incidentes/crud/Prioridad.php'], maxlength: "10", required: "true"},
+            {index : "IncidenteEstadoID", name: "Estado",editable: "true", visible: "true", type: ["dropdown", 'pages/incidentes/crud/Estados.php'], maxlength: "10", required: "true"}];
 
 
         var edit_options ={	url: "pages/usuarios/crud/edit.php",titulo: "Editar",method : "POST" };
@@ -33,7 +33,7 @@
         var del_options ={ url: "pages/usuarios/crud/del.php",titulo: "Eliminar",method : "POST"};
 
         var datasource ={
-            url: "pages/incidnetes/crud/list.php",
+            url: "pages/incidentes/crud/list.php",
             method : "GET",
             datatype: "json",
             pagesize: 10,
