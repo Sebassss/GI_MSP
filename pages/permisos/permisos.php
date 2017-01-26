@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <h4 class="page-head-line">Usuarios</h4>
+        <h4 class="page-head-line">Permisos</h4>
         <div id="table"></div>
     </div>
 
@@ -20,19 +20,15 @@
             {'delete': "true"}];
 
         var colheaders = [
-            {index : "RecursoID", name: "RecursoID", editable: "false",  visible: "false", type: ["text"],placeholder:"", maxlength: "10", required: "false" },
-            {index : "UsuarioID", name: "Usuario",editable: "true", visible: "false", type: ["dropdown","pages/permisos/crud/usr.php"], maxlength: "25", required: "false" },
-            {index : "Nombre", name: "Usuario",editable: "false", visible: "true", type: ["text"], maxlength: "50", required: "true"},
-            {index : "Consultar", name: "Consultar",editable: "true", visible: "true", type: ["text"], maxlength: "10", required: "true"},
-            {index : "Agregar", name: "Agregar",editable: "true", visible: "true", type: ["text"], maxlength: "10", required: "true"},
-            {index : "Editar", name: "Editar",editable: "true", visible: "true", type: ["text"], maxlength: "10", required: "true"},
-            {index : "Eliminar", name: "Eliminar",editable: "true", visible: "true", type: ["text"], maxlength: "10", required: "true"},
-            {index : "Acceso", name: "Acceso",editable: "false", visible: "true", type: ["text"], maxlength: "10", required: "true"}];
+            {index : "PerfilID", name: "PerfilID", editable: "true",  visible: "false", type: ["dropdown","pages/permisos/crud/prf.php"],placeholder:"", maxlength: "10", required: "false" },
+            {index : "UsuarioID", name: "UsuarioID",editable: "true", visible: "false", type: ["dropdown","pages/permisos/crud/usr.php"], maxlength: "25", required: "false" },
+            {index : "usuario", name: "Usuario",editable: "false", visible: "true", type: ["text"], maxlength: "50", required: "true"},
+            {index : "perfil", name: "Perfil",editable: "false", visible: "true", type: ["text"], maxlength: "10", required: "true"}];
 
 
-        var edit_options ={	url: "pages/usuarios/crud/edit.php",titulo: "Editar",method : "POST" };
-        var add_options ={ url: "pages/usuarios/crud/add.php",titulo: "Agregar",method : "POST" };
-        var del_options ={ url: "pages/usuarios/crud/del.php",titulo: "Eliminar",method : "POST"};
+        var edit_options ={	url: "pages/permisos/crud/edit.php",titulo: "Editar",method : "POST" };
+        var add_options ={ url: "pages/permisos/crud/add.php",titulo: "Agregar",method : "POST" };
+        var del_options ={ url: "pages/permisos/crud/del.php",titulo: "Eliminar",method : "POST"};
 
         var datasource ={
             url: "pages/permisos/crud/list.php",

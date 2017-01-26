@@ -7,28 +7,21 @@ $Email = "";
 $Password = "";
 $FechaRegistro = "";
 
+
+
+
+if(isset($_POST['table_field_PerfilID'])) {
+    $PerfilID = $_POST['table_field_PerfilID'];
+}
+
 if(isset($_POST['table_field_UsuarioID'])) {
     $UsuarioID = $_POST['table_field_UsuarioID'];
 }
 
-if(isset($_POST['table_field_Nombre'])) {
-    $Nombre = $_POST['table_field_Nombre'];
-}
-
-if(isset($_POST['table_field_Email'])) {
-    $Email = $_POST['table_field_Email'];
-}
-
-if(isset($_POST['table_field_Password'])) {
-    $Password = md5($_POST['table_field_Password']);
-}
-
-
 
 $db = new Conexion();
 
-$result = $db->query("insert into tbl_usuarios ( Nombre, Email, Password) 
-                        values ('$Nombre','$Email','$Password')") ;
+$result = $db->query("insert into tbl_usuariosperfiles (PerfilID,UsuarioID)  values ('$PerfilID','$UsuarioID')") ;
 
 
   $mensaje = "No pudo Agregar.";

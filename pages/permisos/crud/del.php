@@ -7,7 +7,9 @@
  */
 require_once "../../../core/db/class.conexion.php";
 
-$UsuarioID = "";
+if(isset($_POST['table_field_PerfilID'])) {
+    $PerfilID = $_POST['table_field_PerfilID'];
+}
 
 if(isset($_POST['table_field_UsuarioID'])) {
     $UsuarioID = $_POST['table_field_UsuarioID'];
@@ -16,8 +18,7 @@ if(isset($_POST['table_field_UsuarioID'])) {
 
 $db = new Conexion();
 
-$result = $db->query("delete from  tbl_usuarios where UsuarioID= '$UsuarioID'") ;
-
+$result = $db->query("delete from  tbl_usuariosperfiles where UsuarioID='$UsuarioID' and PerfilID='$PerfilID'") ;
 
 $mensaje = "No pudo Eliminar.";
 $estado = "false";

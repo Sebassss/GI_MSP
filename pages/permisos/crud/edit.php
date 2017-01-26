@@ -7,37 +7,21 @@
  */
 require_once "../../../core/db/class.conexion.php";
 
-$UsuarioID = "";
-$Nombre = "";
-$Email = "";
-$Password = "";
-$FechaRegistro = "";
+if(isset($_POST['table_field_PerfilID'])) {
+    $PerfilID = $_POST['table_field_PerfilID'];
+}
 
 if(isset($_POST['table_field_UsuarioID'])) {
     $UsuarioID = $_POST['table_field_UsuarioID'];
 }
 
-if(isset($_POST['table_field_Nombre'])) {
-    $Nombre = $_POST['table_field_Nombre'];
-}
-
-if(isset($_POST['table_field_Email'])) {
-    $Email = $_POST['table_field_Email'];
-}
-
-if(isset($_POST['table_field_Password'])) {
-    $Password = md5($_POST['table_field_Password']);
-}
-
 
 $db = new Conexion();
 
-$result = $db->query("update  tbl_usuarios set Nombre='$Nombre',
-                                               Password='$Password', 
-                                                Email= '$Email' where UsuarioID= '$UsuarioID'") ;
+$result = $db->query("update  tbl_usuariosperfiles set UsuarioID ='$UsuarioID', PerfilID = '$PerfilID' where UsuarioID= '$UsuarioID' and $PerfilID='$PerfilID'") ;
 
 
-$mensaje = "No pudo Editar.";
+$mensaje = "No pudo Eliminar.";
 $estado = "false";
 
 if(!$result)

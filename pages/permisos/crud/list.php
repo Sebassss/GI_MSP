@@ -36,38 +36,17 @@ else
 
 $db = new Conexion();
 
-$consulta = $db->query("select r.RecursoID,
-                               u.UsuarioID,
-                               u.Nombre,
-                               pr.Consultar,
-                               pr.Agregar,
-                               pr.Editar,
-                               pr.Eliminar,
-                               p.Nombre,
-                               r.Nombre  as Acceso
-                        from tbl_perfilesrecursos pr
-                          left join tbl_recursos r on r.RecursoID = pr.RecursoID
-                          left join tbl_perfiles p on p.PerfilID = pr.PerfilID
-                          left join tbl_usuariosperfiles up on up.PerfilID = pr.PerfilID
-                          left join tbl_usuarios u on u.UsuarioID = up.UsuarioID where r.Parent !=0 order by u.UsuarioID asc, u.Nombre asc");
+$consulta = $db->query("select up.PerfilID, up.UsuarioID, u.Nombre as usuario, p.Nombre as perfil from tbl_usuariosperfiles up
+  left join tbl_usuarios u on u.UsuarioID = up.UsuarioID
+  left join tbl_perfiles p on p.PerfilID = up.PerfilID order by p.Nombre asc, u.Nombre asc");
 
 $num_total_registros = $db->num_rows($consulta);
 $total_paginas = ceil($num_total_registros / $TAMANO_PAGINA);
 
 
-$consulta = $db->query("select r.RecursoID,
-                               u.UsuarioID,
-                               u.Nombre,
-                               pr.Consultar,
-                               pr.Agregar,
-                               pr.Editar,
-                               pr.Eliminar,
-                               case when r.Parent = 0 then concat('[Principal]',r.Nombre ) else r.Nombre end as Acceso
-                        from tbl_perfilesrecursos pr
-                          left join tbl_recursos r on r.RecursoID = pr.RecursoID
-                          left join tbl_perfiles p on p.PerfilID = pr.PerfilID
-                          left join tbl_usuariosperfiles up on up.PerfilID = pr.PerfilID
-                          left join tbl_usuarios u on u.UsuarioID = up.UsuarioID where r.Parent !=0 order by r.Parent,  u.UsuarioID asc, u.Nombre asc limit ". $inicio. ",". $TAMANO_PAGINA.";");
+$consulta = $db->query("select up.PerfilID, up.UsuarioID, u.Nombre as usuario, p.Nombre as perfil from tbl_usuariosperfiles up
+  left join tbl_usuarios u on u.UsuarioID = up.UsuarioID
+  left join tbl_perfiles p on p.PerfilID = up.PerfilID order by p.Nombre asc, u.Nombre asc limit ". $inicio. ",". $TAMANO_PAGINA.";");
 
 $x = array();
 

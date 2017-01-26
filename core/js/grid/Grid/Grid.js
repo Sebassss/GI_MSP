@@ -50,6 +50,40 @@ function loadScript(url, callback)
 
     var methods = {
 
+                    DropDownFill :  function (id,campo,dato,url,accion)
+                    {
+                        $.ajax({
+                            url: url,
+                            dataType: "json",
+                            method: "post",
+                            //async:false,
+                            success: function(response)
+                            {
+                                //console.dir(campo)
+                                for(var  k in response)
+                                {
+                                    if(dato == response[k].value)
+                                    {
+                                            $("#" + id + "_field_" + campo).append("<option selected value='" + response[k].value + "'>" + response[k].text + "</option>")
+                                    }
+                                    else
+                                    {
+                                        if (accion != 2)
+                                        {
+                                            $("#" + id + "_field_" + campo).append("<option value='" + response[k].value + "'>" + response[k].text + "</option>")
+                                        }
+                                    }
+                                }
+
+
+                            },
+                            error: function(error)
+                            {
+                                $("#" + id + "_field_" + campo).append("<option>Error</option>")
+                            }
+                        });
+
+                    },
     				export2XLS : function(obj)
     				{
 						var id = $(obj).attr("id");
@@ -576,27 +610,9 @@ function loadScript(url, callback)
                                                         if ($("#" + id + "_field_" + obj.Columnas[i].index).prop('nodeName') == 'SELECT')
                                                         {
                                                             var campo = obj.Columnas[i].index;
-                                                            var dato = "";//data[i];
-                                                            $.ajax({
-                                                                url: obj.Columnas[i].type[1],
-                                                                dataType: "json",
-                                                                method: "post",
-                                                                success: function (response) {
-
-                                                                    console.dir(dato)
-                                                                    for (var k in response) {
-                                                                        if (dato == response[k].value) {
-                                                                            $("#" + id + "_field_" + campo).append("<option selected value='" + response[k].value + "'>" + response[k].text + "</option>")
-                                                                        }
-                                                                        else {
-                                                                            $("#" + id + "_field_" + campo).append("<option value='" + response[k].value + "'>" + response[k].text + "</option>")
-                                                                        }
-                                                                    }
-                                                                },
-                                                                error: function (error) {
-                                                                    $("#" + id + "_field_" + campo).append("<option>Error</option>")
-                                                                }
-                                                            })
+                                                            var dato = "";//; data[i];
+                                                            var url = obj.Columnas[i].type[1];
+                                                            methods.DropDownFill(id, campo, dato, url, accion);
                                                         }
                                                 }
 
@@ -707,43 +723,22 @@ function loadScript(url, callback)
 			                                        html += '</div>';  // modalWindow
 			                                        $('body').append(html);
 
-			                                        //console.log(data)
-	                                        		for(i=0;i<data.length;i++)
+
+
+	                                        		for(i=0; i<data.length;i++)
 	                                        		{
+                                                        console.log($("#" + id + "_field_" + obj.Columnas[i].index).val(data[i]))
+
 	                                        		    if($("#"+id+"_field_"+obj.Columnas[i].index).prop('nodeName') == 'INPUT')
                                                         {
                                                             $("#" + id + "_field_" + obj.Columnas[i].index).val(data[i]);
                                                         }
                                                         else
                                                         {
-
-                                                            var campo = obj.Columnas[i].index;
+                                                            var campo =obj.Columnas[i].index;
                                                             var dato = data[i];
-                                                            $.ajax({
-                                                                url: obj.Columnas[i].type[1],
-                                                                dataType: "json",
-                                                                method: "post",
-                                                                success: function(response)
-                                                                {
-
-                                                                    console.dir(dato)
-                                                                    for(var  k in response)
-                                                                    {
-                                                                        if(dato == response[k].value)
-                                                                        {
-                                                                            $("#" + id + "_field_" + campo).append("<option selected value='" + response[k].value + "'>" + response[k].text + "</option>")
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            $("#" + id + "_field_" + campo).append("<option value='" + response[k].value + "'>" + response[k].text + "</option>")
-                                                                        }
-                                                                    }
-                                                                },
-                                                                error: function(error)
-                                                                {
-                                                                    	$("#" + id + "_field_" + campo).append("<option>Error</option>")
-                                                                }
-                                                            })
+                                                            var url = obj.Columnas[i].type[1];
+                                                            methods.DropDownFill(id, campo,dato,url,accion);
 
                                                         }
 
@@ -865,34 +860,10 @@ function loadScript(url, callback)
                                                         else
                                                         {
 
-                                                            var campo = obj.Columnas[i].index;
+                                                            var campo =obj.Columnas[i].index;
                                                             var dato = data[i];
-                                                            $.ajax({
-                                                                url: obj.Columnas[i].type[1],
-                                                                dataType: "json",
-                                                                method: "post",
-                                                                success: function(response)
-                                                                {
-
-
-                                                                    $("#" + id + "_field_" + campo).prop('disabled', true);
-                                                                    for(var  k in response)
-                                                                    {
-                                                                        if(dato == response[k].value)
-                                                                        {
-                                                                            $("#" + id + "_field_" + campo).append("<option selected value='" + response[k].value + "'>" + response[k].text + "</option>")
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            $("#" + id + "_field_" + campo).append("<option value='" + response[k].value + "'>" + response[k].text + "</option>")
-                                                                        }
-                                                                    }
-                                                                },
-                                                                error: function(error)
-                                                                {
-                                                                    $("#" + id + "_field_" + campo).append("<option>Error</option>")
-                                                                }
-                                                            })
+                                                            var url = obj.Columnas[i].type[1];
+                                                            methods.DropDownFill(id, campo,dato,url,accion);
 
                                                         }
 
