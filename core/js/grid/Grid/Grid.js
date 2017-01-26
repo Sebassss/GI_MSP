@@ -315,9 +315,11 @@ function loadScript(url, callback)
     				},
                     doTable : function(obj,dataset)
                               {
+                                  console.dir(obj);
                                     var id = $(obj).attr("id");
 									var display;
-                                    var html = "<table id='"+id+"_table' class='table table-striped'><thead>"
+                                    var visible = (obj.Visible=="false") ? 'display:none' : '';
+                                    var html = "<table id='"+id+"_table' class='table table-striped' style='"+visible+"'><thead>"
 								  		html +="<div id="+id+"_buttons></div> <hr>"
                                         html +="<tr>"
                               			
@@ -408,7 +410,7 @@ function loadScript(url, callback)
                                         {
 
 	                                        html +="</tbody></table>"
-		                                    html +="<ul class='pagination' > <span class='pagination-info'>Mostrando "+dataset.info[0].rows+" resultados de "+dataset.info[0].total_rows+" en un total de "+dataset.info[0].page_count+" páginas.</span>"
+		                                    html +="<ul class='pagination' style='"+visible+"' > <span class='pagination-info'>Mostrando "+dataset.info[0].rows+" resultados de "+dataset.info[0].total_rows+" en un total de "+dataset.info[0].page_count+" páginas.</span>"
 	                                        for(t=0; t<dataset.info[0].page_count;t++)
 	                                        {
 	                                        	if(parseInt(t+1) == dataset.info[0].page)

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-01-2017 a las 22:21:40
+-- Tiempo de generación: 26-01-2017 a las 15:08:32
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 7.0.10
 
@@ -27,14 +27,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tbl_incidentes` (
-  `IncidenteID` int(10) NOT NULL,
-  `MovilidadID` int(10) DEFAULT NULL,
-  `TipoIncidenteID` int(10) DEFAULT NULL,
-  `Fecha` date DEFAULT NULL,
-  `ProvinciaID` int(10) DEFAULT NULL,
-  `DepartamentoID` int(10) DEFAULT NULL,
-  `LocalidadID` int(10) DEFAULT NULL,
-  `Detalle` longtext
+  `IncidenteID` int(11) NOT NULL,
+  `UsuarioID` int(11) NOT NULL,
+  `Titulo` varchar(200) NOT NULL,
+  `Detalles` longtext NOT NULL,
+  `IncidenteEstadoID` int(11) NOT NULL,
+  `FechaRegistro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -80,7 +78,9 @@ INSERT INTO `tbl_perfilesrecursos` (`Consultar`, `Agregar`, `Editar`, `Eliminar`
 (0, 0, 0, 0, 1, 3),
 (0, 0, 0, 0, 2, 3),
 (0, 0, 0, 0, 3, 3),
-(0, 0, 0, 0, 4, 3);
+(0, 0, 0, 0, 4, 3),
+(0, 0, 0, 0, 5, 3),
+(0, 0, 0, 0, 5, 3);
 
 -- --------------------------------------------------------
 
@@ -126,7 +126,8 @@ INSERT INTO `tbl_recursos` (`RecursoID`, `Nombre`, `FechaRegistro`, `Parent`, `L
 (1, 'Home', '2017-01-11 00:00:00', 0, 'javascript:loadPage(\'pages/home/home.php\');', 'fa fa-home', 0),
 (2, 'Usuarios', '2017-01-11 00:00:00', 0, '', '', 1),
 (3, 'Usuarios', '2017-01-11 00:00:00', 2, 'javascript:loadPage(\'pages/usuarios/usuarios.php\');', NULL, 1),
-(4, 'Permisos', '2017-01-11 00:00:00', 2, 'javascript:loadPage(\'pages/usuarios/usuarios.php\');', NULL, 2);
+(4, 'Permisos', '2017-01-11 00:00:00', 2, 'javascript:loadPage(\'pages/permisos/permisos.php\');', NULL, 2),
+(5, 'Incidentes', '2017-01-11 00:00:00', 0, 'javascript:loadPage(\'pages/incidentes/incidentes.php\');', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -139,7 +140,7 @@ CREATE TABLE `tbl_usuarios` (
   `Nombre` varchar(100) DEFAULT NULL COMMENT 'Nombre completo del usuario',
   `Email` varchar(75) DEFAULT NULL COMMENT 'Login del usuario',
   `Password` varchar(45) DEFAULT NULL COMMENT 'Clave del usuario',
-  `FechaRegistro` datetime DEFAULT NULL COMMENT 'Fecha en la que se registro el usuario'
+  `FechaRegistro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Fecha en la que se registro el usuario'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -147,9 +148,8 @@ CREATE TABLE `tbl_usuarios` (
 --
 
 INSERT INTO `tbl_usuarios` (`UsuarioID`, `Nombre`, `Email`, `Password`, `FechaRegistro`) VALUES
-(2, 'Ivan, Neira', 'ien1983@gmail.com', '202cb962ac59075b964b07152d234b70', '2017-01-11 00:00:00'),
 (3, 'Sebastian, Mendoza', 'pseba20@gmail.com', '202cb962ac59075b964b07152d234b70', '2017-01-11 00:00:00'),
-(4, 'Prueba, Prueba', 'prueba@gmail.com', '202cb962ac59075b964b07152d234b70', '2017-01-11 00:00:00');
+(8, 'Delgado, Rolando', 'rdel@gmai.com.ar', 'f4cc399f0effd13c888e310ea2cf5399', '2017-01-25 08:47:44');
 
 -- --------------------------------------------------------
 
@@ -167,6 +167,7 @@ CREATE TABLE `tbl_usuariosperfiles` (
 --
 
 INSERT INTO `tbl_usuariosperfiles` (`UsuarioID`, `PerfilID`) VALUES
+(8, 4),
 (3, 3);
 
 --
@@ -177,8 +178,7 @@ INSERT INTO `tbl_usuariosperfiles` (`UsuarioID`, `PerfilID`) VALUES
 -- Indices de la tabla `tbl_incidentes`
 --
 ALTER TABLE `tbl_incidentes`
-  ADD PRIMARY KEY (`IncidenteID`),
-  ADD UNIQUE KEY `MovilidadID` (`MovilidadID`) USING BTREE;
+  ADD PRIMARY KEY (`IncidenteID`);
 
 --
 -- Indices de la tabla `tbl_perfiles`
@@ -219,7 +219,7 @@ ALTER TABLE `tbl_usuariosperfiles`
 -- AUTO_INCREMENT de la tabla `tbl_incidentes`
 --
 ALTER TABLE `tbl_incidentes`
-  MODIFY `IncidenteID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `IncidenteID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `tbl_perfiles`
 --
@@ -234,7 +234,7 @@ ALTER TABLE `tbl_personas`
 -- AUTO_INCREMENT de la tabla `tbl_usuarios`
 --
 ALTER TABLE `tbl_usuarios`
-  MODIFY `UsuarioID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'LLave primaria de la tabla', AUTO_INCREMENT=5;
+  MODIFY `UsuarioID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'LLave primaria de la tabla', AUTO_INCREMENT=10;
 --
 -- Restricciones para tablas volcadas
 --

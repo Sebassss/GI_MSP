@@ -14,10 +14,10 @@
     {
 
         var Options = [
-            {refresh: "true"},
+            {refresh: "false"},
             {add: "true"},
-            {edit: "true"},
-            {'delete': "true"}];
+            {edit: "false"},
+            {'delete': "false"}];
 
         var colheaders = [
             {index : "UsuarioID", name: "id", editable: "false",  visible: "false", type:[ "text"],placeholder:"", maxlength: "10", required: "false" },
@@ -52,7 +52,8 @@
             timeout: 6000, /*Segundos de espera para llamados ajax edit, update, delete*/
             animate: 1,
             datasource: datasource,
-            export2XLS: "true"
+            export2XLS: "false",
+            Visible : "false"
         });
 
 
