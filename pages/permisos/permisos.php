@@ -22,8 +22,8 @@
         var colheaders = [
             {index : "PerfilID", name: "PerfilID", editable: "true",  visible: "false", type: ["dropdown","pages/permisos/crud/prf.php"],placeholder:"", maxlength: "10", required: "false" },
             {index : "UsuarioID", name: "UsuarioID",editable: "true", visible: "false", type: ["dropdown","pages/permisos/crud/usr.php"], maxlength: "25", required: "false" },
-            {index : "usuario", name: "Usuario",editable: "false", visible: "true", type: ["text"], maxlength: "50", required: "true"},
-            {index : "perfil", name: "Perfil",editable: "false", visible: "true", type: ["text"], maxlength: "10", required: "true"}];
+            {index : "usuario", name: "Usuario",editable: "false", visible: "true", type: ["text"], maxlength: "50", required: "false"},
+            {index : "perfil", name: "Perfil",editable: "false", visible: "true", type: ["text"], maxlength: "10", required: "false"}];
 
 
         var edit_options ={	url: "pages/permisos/crud/edit.php",titulo: "Editar",method : "POST" };

@@ -50,6 +50,14 @@ function loadScript(url, callback)
 
     var methods = {
 
+                    Serialize: function(el)
+                    {
+                        var serialized = $(el).serialize();
+                        if (!serialized) // not a form
+                            serialized = $(el).find('input[name],select[name],textarea[name]').serialize();
+                        return serialized;
+                    },
+
                     DropDownFill :  function (id,campo,dato,url,accion)
                     {
                         $.ajax({
@@ -100,7 +108,7 @@ function loadScript(url, callback)
     						{
     							$.ajax({
 	                        		type: obj.add_options.method,
-			                        data: $("#"+form).serialize(),
+			                        data: methods.Serialize($("#"+form)),//$("#"+form).serialize(),
 			                        url: obj.add_options.url,
 									global:true,
                                     cache:false,
@@ -110,7 +118,6 @@ function loadScript(url, callback)
 			                        {
                                         if(data.estado == "true")
                                         {
-
                                             $("#"+id+"_CrudModal").find("#resulttxt").addClass("alert alert-success");
                                             $("#"+id+"_CrudModal").find("#resulttxt").html("<strong>"+data.mensaje+"</strong>");
                                             $("#"+id+"_CrudModal").find("#resulttxt").show();
@@ -147,7 +154,7 @@ function loadScript(url, callback)
     						{
     							$.ajax({
 	                        		type: obj.edit_options.method,
-			                        data: $("#"+form).serialize(),
+			                        data: methods.Serialize($("#"+form)),//$("#"+form).serialize(),
 			                        url: obj.edit_options.url,
 									global:true,
                                     cache:false,
@@ -192,7 +199,7 @@ function loadScript(url, callback)
     						{
 								$.ajax({
 									type: obj.del_options.method,
-									data: $("#"+form).serialize(),
+									data: methods.Serialize($("#"+form)),//$("#"+form).serialize(),
 									url: obj.del_options.url,
 									global:true,
 									cache:false,
@@ -315,12 +322,12 @@ function loadScript(url, callback)
     				},
                     doTable : function(obj,dataset)
                               {
-                                  console.dir(obj);
+                                  //console.dir(obj);
                                     var id = $(obj).attr("id");
 									var display;
                                     var visible = (obj.Visible=="false") ? 'display:none' : '';
                                     var html = "<table id='"+id+"_table' class='table table-striped' style='"+visible+"'><thead>"
-								  		html +="<div id="+id+"_buttons></div> <hr>"
+                                        html +="<div id="+id+"_buttons></div> <hr>"
                                         html +="<tr>"
                               			
                                         for(i=0;i<obj.Columnas.length; i++)
@@ -513,7 +520,7 @@ function loadScript(url, callback)
 												wnd=true;
 
 												var html =  '<div id="'+id+'_CrudModal" class="modal"  data-easein="flipBounceYIn" tabindex="-1" data-keyboard="false" data-backdrop="static"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">';
-
+                                                var rdm = Math.floor((Math.random() * 100) + 1);
 		                                        html += '<div class="modal-dialog">';
 		                                        html += '<div class="modal-content">';
 		                                        html += '<div class="modal-header">';
@@ -522,7 +529,8 @@ function loadScript(url, callback)
 												html += '<div id="resulttxt" name="resulttxt"  style="display:none;text-align:center"></div>'
 		                                        html += '</div>';
 		                                        html += '<div class="modal-body" style="height:400px; overflow:auto">';
-		                                        html += '<form id="'+id+'_form" action="#" method="post" autocomplete="off">';
+		                                        html += '<div id="'+id+'_form" action="#" method="post" autocomplete="new-password">';
+
 		                                        /****/
                                                 var display;
 		                                        for(i=0;i<obj.Columnas.length;i++)
@@ -549,7 +557,7 @@ function loadScript(url, callback)
                                                                 }
                                                                 html += "<div class='form-group' style='"+display+"'>"
                                                                 html += "  <label for='" + id + "_field_" + obj.Columnas[i].index + "'>" + obj.Columnas[i].name + ":</label>"
-                                                                html += "  <input type='" + obj.Columnas[i].type + "' class='form-control' value='' name='" + id + "_field_" + obj.Columnas[i].index + "' id='" + id + "_field_" + obj.Columnas[i].index + "' placeholder='" + placeholder + "' style='" + obj.Columnas[i].style + "' maxlength='" + obj.Columnas[i].maxlength + "' " + required + " >"
+                                                                html += "  <input type='" + obj.Columnas[i].type[0] + "' class='form-control' value='' name='" + id + "_field_" + obj.Columnas[i].index + "' id='" + id + "_field_" + obj.Columnas[i].index + "' placeholder='" + placeholder + "' style='" + obj.Columnas[i].style + "' maxlength='" + obj.Columnas[i].maxlength + "' " + required + " >"
                                                                 html += "</div>"
 
 		                                                }break;
@@ -589,14 +597,23 @@ function loadScript(url, callback)
                                                             var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
                                                             html += "<div class='form-group' style='"+display+"'>"
                                                             html += "  <label for='"+id+"_field_"+obj.Columnas[i].index+"'>"+obj.Columnas[i].name+":</label>"
-                                                            html += "  <input type='"+obj.Columnas[i].type+"' class='form-control' name='" + id + "_field_" + obj.Columnas[i].index + "'  id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" >"
+                                                            html += "  <input value='' type='"+obj.Columnas[i].type[0]+"' class='form-control' name='" + id + "_field_" + obj.Columnas[i].index + "'  id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" >"
                                                             html += "</div>"
-                                                        }
+                                                        }break;
+
+                                                        case "textarea":
+                                                        {
+                                                            var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
+                                                            html += "<div class='form-group' style='"+display+"'>"
+                                                            html += "  <label for='"+id+"_field_"+obj.Columnas[i].index+"'>"+obj.Columnas[i].name+":</label>"
+                                                            html += "  <textarea  class='form-control' name='" + id + "_field_" + obj.Columnas[i].index + "'  id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" ></textarea>"
+                                                            html += "</div>"
+                                                        }break;
 		                                            }
 		                                        }
 		                                        /****/
 		                                        //html += content;
-		                                        html += '</form>';
+		                                        html += '</div>';
 		                                        html += '</div>';
 		                                        html += '<div class="modal-footer">';
 		                                        html += '<span class="btn btn-primary" data-dismiss="modal">Cerrar</span>';
@@ -607,15 +624,54 @@ function loadScript(url, callback)
 		                                        html += '</div>';  // modalWindow
 		                                        $('body').append(html);
 
+
+
+
                                                 for(i=0;i<obj.Columnas.length;i++)
                                                 {
-                                                        if ($("#" + id + "_field_" + obj.Columnas[i].index).prop('nodeName') == 'SELECT')
+                                                    $("#" + id + "_field_" + obj.Columnas[i].index).attr('autocomplete','new-password')
+
+
+
+                                                        switch($("#" + id + "_field_" + obj.Columnas[i].index).prop('nodeName'))
                                                         {
-                                                            var campo = obj.Columnas[i].index;
-                                                            var dato = "";//; data[i];
-                                                            var url = obj.Columnas[i].type[1];
-                                                            methods.DropDownFill(id, campo, dato, url, accion);
+                                                            case "SELECT":
+                                                            {
+                                                                var campo = obj.Columnas[i].index;
+                                                                var dato = "";//; data[i];
+                                                                var url = obj.Columnas[i].type[1];
+                                                                methods.DropDownFill(id, campo, dato, url, accion);
+                                                            }break;
+
+                                                            case "TEXTAREA":
+                                                            {
+                                                                var oldEditor = tinyMCE.get(id + "_field_" + obj.Columnas[i].index);
+                                                                if (oldEditor != undefined) {
+                                                                    tinymce.remove(oldEditor);
+                                                                }
+
+                                                                tinymce.init({
+                                                                    selector: "textarea#"+ id + "_field_" + obj.Columnas[i].index,
+                                                                    height: obj.Columnas[i].type[1],
+                                                                    language: 'es',
+                                                                    menubar: false,
+                                                                    plugins: [
+                                                                        'advlist autolink lists link image charmap print preview anchor',
+                                                                        'searchreplace visualblocks code fullscreen',
+                                                                        'insertdatetime media table contextmenu paste code'
+                                                                    ],
+                                                                    toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+                                                                });
+
+                                                                $(document).on('focusin', function(e) {
+                                                                    if ($(e.target).closest(".mce-window").length) {
+                                                                        e.stopImmediatePropagation();
+                                                                    }
+                                                                });
+                                                            }break;
                                                         }
+
+
                                                 }
 
                                         		$("#btnGuardar").click(function(){
@@ -644,7 +700,7 @@ function loadScript(url, callback)
                                                     html += '<div id="resulttxt" name="resulttxt"  style="display:none;text-align:center"></div>'
 			                                        html += '</div>';
 			                                        html += '<div class="modal-body" style="height:400px; overflow:auto">';
-			                                        html += '<form id="'+id+'_form" action="#" method="post" autocomplete="off">';
+			                                        html += '<div id="'+id+'_form" action="#" method="post" autocomplete="off">';
 			                                        /****/
 
                                                     var display;
@@ -667,7 +723,7 @@ function loadScript(url, callback)
 				                                                 	var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
 				                                                 	html += "<div class='form-group' style='"+display+"'>"
 				                                                 	html += "  <label for='"+id+"_field_"+obj.Columnas[i].index+"'>"+obj.Columnas[i].name+":</label>"
-				                                                 	html += "  <input type='"+obj.Columnas[i].type+"' class='form-control' name='" + id + "_field_" + obj.Columnas[i].index + "'  id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" >"
+				                                                 	html += "  <input type='"+obj.Columnas[i].type[0]+"' class='form-control' name='" + id + "_field_" + obj.Columnas[i].index + "'  id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" >"
 				                                                 	html += "</div>"
 
 			                                                }break;
@@ -707,14 +763,23 @@ function loadScript(url, callback)
                                                                 var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
                                                                 html += "<div class='form-group' style='"+display+"'>"
                                                                 html += "  <label for='"+id+"_field_"+obj.Columnas[i].index+"'>"+obj.Columnas[i].name+":</label>"
-                                                                html += "  <input type='"+obj.Columnas[i].type+"' class='form-control' name='" + id + "_field_" + obj.Columnas[i].index + "'  id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" >"
+                                                                html += "  <input type='"+obj.Columnas[i].type[0]+"' class='form-control' name='" + id + "_field_" + obj.Columnas[i].index + "'  id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" >"
                                                                 html += "</div>"
-                                                            }
+                                                            }break;
+
+                                                            case "textarea":
+                                                            {
+                                                                var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
+                                                                html += "<div class='form-group' style='"+display+"'>"
+                                                                html += "  <label for='"+id+"_field_"+obj.Columnas[i].index+"'>"+obj.Columnas[i].name+":</label>"
+                                                                html += "  <textarea  class='form-control' name='" + id + "_field_" + obj.Columnas[i].index + "'  id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" ></textarea>"
+                                                                html += "</div>"
+                                                            }break;
 			                                            }
 			                                        }
 			                                        /****/
 			                                        //html += content;
-			                                        html += '</form>';
+			                                        html += '</div>';
 			                                        html += '</div>';
 			                                        html += '<div class="modal-footer">';
 			                                        html += '<span class="btn btn-primary" data-dismiss="modal">Cerrar</span>';
@@ -774,7 +839,7 @@ function loadScript(url, callback)
                                                     html += '<div id="resulttxt" name="resulttxt"  style="display:none;text-align:center"></div>'
 			                                        html += '</div>';
 			                                        html += '<div class="modal-body" style="height:400px; overflow:auto">';
-			                                        html += '<form id="'+id+'_form" action="#" method="post" autocomplete="off">';
+			                                        html += '<div id="'+id+'_form" action="#" method="post" autocomplete="off">';
 			                                        /****/
 
 			                                        var display;
@@ -795,7 +860,7 @@ function loadScript(url, callback)
 				                                                    var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
                                                                     html += "<div class='form-group' style='"+display+"'>"
                                                                     html += "  <label for='" + id + "_field_" + obj.Columnas[i].index + "'>" + obj.Columnas[i].name + ":</label>"
-                                                                    html += "  <input readonly type='" + obj.Columnas[i].type + "' class='form-control' value='' name='" + id + "_field_" + obj.Columnas[i].index + "' id='" + id + "_field_" + obj.Columnas[i].index + "'  style='" + obj.Columnas[i].style + "' maxlength='" + obj.Columnas[i].maxlength + "' " + required + " >"
+                                                                    html += "  <input readonly type='" + obj.Columnas[i].type[0] + "' class='form-control' value='' name='" + id + "_field_" + obj.Columnas[i].index + "' id='" + id + "_field_" + obj.Columnas[i].index + "'  style='" + obj.Columnas[i].style + "' maxlength='" + obj.Columnas[i].maxlength + "' " + required + " >"
                                                                     html += "</div>"
 
 			                                                }break;
@@ -835,14 +900,14 @@ function loadScript(url, callback)
                                                                 var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
                                                                 html += "<div class='form-group' style='"+display+"'>"
                                                                 html += "  <label for='"+id+"_field_"+obj.Columnas[i].index+"'>"+obj.Columnas[i].name+":</label>"
-                                                                html += "  <input readonly type='"+obj.Columnas[i].type+"' class='form-control' name='" + id + "_field_" + obj.Columnas[i].index + "'  id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" >"
+                                                                html += "  <input readonly type='"+obj.Columnas[i].type[0]+"' class='form-control' name='" + id + "_field_" + obj.Columnas[i].index + "'  id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" >"
                                                                 html += "</div>"
                                                             }
 			                                            }
 			                                        }
 			                                        /****/
 			                                        //html += content;
-			                                        html += '</form>';
+			                                        html += '</div>';
 			                                        html += '</div>';
 			                                        html += '<div class="modal-footer">';
 			                                        html += '<span class="btn btn-primary" data-dismiss="modal">Cerrar</span>';
@@ -975,6 +1040,10 @@ function loadScript(url, callback)
 
 								loadScript("core/js/grid/Grid/inc/jquery.base64.js",function()
 								{
+                                    loadScript("core/js/grid/Grid/inc/tinymce.min.js",function()
+                                    {
+
+                                    })
 
 				    			})
 
