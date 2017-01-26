@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-01-2017 a las 15:08:32
+-- Tiempo de generación: 26-01-2017 a las 15:15:53
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 7.0.10
 
@@ -23,6 +23,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbl_incidenteprioridad`
+--
+
+CREATE TABLE `tbl_incidenteprioridad` (
+  `IncidentePrioridadID` int(11) NOT NULL,
+  `Nombre` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbl_incidentes`
 --
 
@@ -33,6 +44,17 @@ CREATE TABLE `tbl_incidentes` (
   `Detalles` longtext NOT NULL,
   `IncidenteEstadoID` int(11) NOT NULL,
   `FechaRegistro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_incidentestado`
+--
+
+CREATE TABLE `tbl_incidentestado` (
+  `IncidenteEstadoID` int(11) NOT NULL,
+  `Nombre` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -149,7 +171,8 @@ CREATE TABLE `tbl_usuarios` (
 
 INSERT INTO `tbl_usuarios` (`UsuarioID`, `Nombre`, `Email`, `Password`, `FechaRegistro`) VALUES
 (3, 'Sebastian, Mendoza', 'pseba20@gmail.com', '202cb962ac59075b964b07152d234b70', '2017-01-11 00:00:00'),
-(8, 'Delgado, Rolando', 'rdel@gmai.com.ar', 'f4cc399f0effd13c888e310ea2cf5399', '2017-01-25 08:47:44');
+(8, 'Delgado, Rolando', 'rdel@gmai.com.ar', 'f4cc399f0effd13c888e310ea2cf5399', '2017-01-25 08:47:44'),
+(10, 'Ivan, Neira', 'ien1983@gmail.com', '202cb962ac59075b964b07152d234b70', '2017-01-26 12:09:29');
 
 -- --------------------------------------------------------
 
@@ -168,17 +191,30 @@ CREATE TABLE `tbl_usuariosperfiles` (
 
 INSERT INTO `tbl_usuariosperfiles` (`UsuarioID`, `PerfilID`) VALUES
 (8, 4),
-(3, 3);
+(3, 3),
+(10, 3);
 
 --
 -- Índices para tablas volcadas
 --
 
 --
+-- Indices de la tabla `tbl_incidenteprioridad`
+--
+ALTER TABLE `tbl_incidenteprioridad`
+  ADD PRIMARY KEY (`IncidentePrioridadID`);
+
+--
 -- Indices de la tabla `tbl_incidentes`
 --
 ALTER TABLE `tbl_incidentes`
   ADD PRIMARY KEY (`IncidenteID`);
+
+--
+-- Indices de la tabla `tbl_incidentestado`
+--
+ALTER TABLE `tbl_incidentestado`
+  ADD PRIMARY KEY (`IncidenteEstadoID`);
 
 --
 -- Indices de la tabla `tbl_perfiles`
@@ -216,10 +252,20 @@ ALTER TABLE `tbl_usuariosperfiles`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `tbl_incidenteprioridad`
+--
+ALTER TABLE `tbl_incidenteprioridad`
+  MODIFY `IncidentePrioridadID` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `tbl_incidentes`
 --
 ALTER TABLE `tbl_incidentes`
   MODIFY `IncidenteID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_incidentestado`
+--
+ALTER TABLE `tbl_incidentestado`
+  MODIFY `IncidenteEstadoID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `tbl_perfiles`
 --
@@ -234,7 +280,7 @@ ALTER TABLE `tbl_personas`
 -- AUTO_INCREMENT de la tabla `tbl_usuarios`
 --
 ALTER TABLE `tbl_usuarios`
-  MODIFY `UsuarioID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'LLave primaria de la tabla', AUTO_INCREMENT=10;
+  MODIFY `UsuarioID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'LLave primaria de la tabla', AUTO_INCREMENT=11;
 --
 -- Restricciones para tablas volcadas
 --
