@@ -10,14 +10,50 @@
 
 <script type="text/javascript">
 
+
+
+    function sendTelegram(data)
+    {
+        var regex = /(<([^>]+)>)/ig,
+            body = data.Detalles,
+            result = body.replace(regex, "");
+
+        var Estado = data.Estado;
+        var Prioridad = data.Prioridad;
+
+
+        var mensaje = "Se ha creado un incidente :" + data.Titulo + " " +  result + " Estado:" + Estado + " Prioridad:" + Prioridad
+        //console.log(mensaje);
+
+        $.ajax(
+            {
+                url: 'https://api.telegram.org/bot251753439:AAHcySu-8c062FLT7cq2ovx7JdUrpb4418E/sendMessage',
+                data : {chat_id:"-1001099774757", text: mensaje},
+                type: 'json',
+                method: 'post',
+                dataType: 'application/x-www-form-urlencoded; UTF-8',
+
+                success: function(data)
+                {
+                    alert("El area de informática ha recibido su mensaje, en breve sera contactada.");
+                },
+
+                error: function(data)
+                {
+                    console.log("Error");
+                }
+            }
+        );
+
+    }
     jQuery(document).ready(function($)
     {
 
         var Options = [
             {refresh: "false"},
             {add: "true"},
-            {edit: "false"},
-            {'delete': "false"}];
+            {edit: "true"},
+            {'delete': "true"}];
 
         var colheaders = [
             {index : "IncidenteID", name: "Incidente", editable: "false",  visible: "false", type:[ "text"],placeholder:"", maxlength: "10", required: "false" },
@@ -28,16 +64,16 @@
             {index : "IncidenteEstadoID", name: "Estado",editable: "true", visible: "true", type: ["dropdown", 'pages/incidentes/crud/Estados.php'], maxlength: "10", required: "true"}];
 
 
-        var edit_options ={	url: "pages/incidentes/crud/edit.php",titulo: "Editar",method : "POST" };
-        var add_options ={ url: "pages/incidentes/crud/add.php",titulo: "Agregar",method : "POST" };
-        var del_options ={ url: "pages/incidentes/crud/del.php",titulo: "Eliminar",method : "POST"};
+        var edit_options ={	url: "pages/incidentes/crud/edit.php",titulo: "Editar",method : "POST", callback: sendTelegram };
+        var add_options ={ url: "pages/incidentes/crud/add.php",titulo: "Agregar",method : "POST", callback: sendTelegram  };
+        var del_options ={ url: "pages/incidentes/crud/del.php",titulo: "Eliminar",method : "POST", callback: sendTelegram };
 
         var datasource ={
             url: "pages/incidentes/crud/list.php",
             method : "GET",
             datatype: "json",
-            pagesize: 10,
-            paginate: "false",
+            pagesize: 8,
+            paginate: "true",
             fixedrows: "10"
         };
 
@@ -54,7 +90,7 @@
             animate: 1,
             datasource: datasource,
             export2XLS: "false",
-            Visible : "false",
+            Visible : "true",
             ModalWidth : "80%"
         });
 

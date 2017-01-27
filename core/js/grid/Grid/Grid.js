@@ -106,6 +106,7 @@ function loadScript(url, callback)
     					{
     						case 0: /*Agregar*/
     						{
+                                tinyMCE.triggerSave();
     							$.ajax({
 	                        		type: obj.add_options.method,
 			                        data: methods.Serialize($("#"+form)),//$("#"+form).serialize(),
@@ -124,6 +125,7 @@ function loadScript(url, callback)
                                             setTimeout(function() {
                                             $("#"+id+"_CrudModal .close").click();
                                             methods.getDatos(obj,1,methods.doTable);},1000);
+                                            obj.add_options.callback(data);
                                         }
                                         else
                                         {
@@ -152,6 +154,7 @@ function loadScript(url, callback)
 
 							case 1: /*Editar*/
     						{
+                                tinyMCE.triggerSave();
     							$.ajax({
 	                        		type: obj.edit_options.method,
 			                        data: methods.Serialize($("#"+form)),//$("#"+form).serialize(),
@@ -197,6 +200,7 @@ function loadScript(url, callback)
 
 							case 2: /*Eliminar*/
     						{
+                                tinyMCE.triggerSave();
 								$.ajax({
 									type: obj.del_options.method,
 									data: methods.Serialize($("#"+form)),//$("#"+form).serialize(),
@@ -322,6 +326,7 @@ function loadScript(url, callback)
     				},
                     doTable : function(obj,dataset)
                               {
+                                  console.dir(dataset);
                                   //console.dir(obj);
                                     var id = $(obj).attr("id");
 									var display;
@@ -529,7 +534,7 @@ function loadScript(url, callback)
 												html += '<div id="resulttxt" name="resulttxt"  style="display:none;text-align:center"></div>'
 		                                        html += '</div>';
 		                                        html += '<div class="modal-body" style="height:400px; overflow:auto">';
-		                                        html += '<div id="'+id+'_form" action="#" method="post" autocomplete="new-password">';
+		                                        html += '<div id="'+id+'_form" action="#" method="post" >';
 
 		                                        /****/
                                                 var display;
@@ -697,7 +702,7 @@ function loadScript(url, callback)
                                                     html += '<div id="resulttxt" name="resulttxt"  style="display:none;text-align:center"></div>'
 			                                        html += '</div>';
 			                                        html += '<div class="modal-body" style="height:400px; overflow:auto">';
-			                                        html += '<div id="'+id+'_form" action="#" method="post" autocomplete="off">';
+			                                        html += '<div id="'+id+'_form" >';
 			                                        /****/
 
                                                     var display;
@@ -794,6 +799,12 @@ function loadScript(url, callback)
                                                         //console.log($("#" + id + "_field_" + obj.Columnas[i].index).val(data[i]))
                                                         switch($("#" + id + "_field_" + obj.Columnas[i].index).prop('nodeName'))
                                                         {
+
+                                                            case "INPUT":
+                                                            {
+                                                                $("#" + id + "_field_" + obj.Columnas[i].index).val(data[i]);
+                                                            }break;
+
                                                             case "SELECT":
                                                             {
                                                                 var campo = obj.Columnas[i].index;
@@ -804,6 +815,7 @@ function loadScript(url, callback)
 
                                                             case "TEXTAREA":
                                                             {
+                                                                $("#" + id + "_field_" + obj.Columnas[i].index).val(data[i]);
                                                                 var oldEditor = tinyMCE.get(id + "_field_" + obj.Columnas[i].index);
                                                                 if (oldEditor != undefined) {
                                                                     tinymce.remove(oldEditor);
@@ -829,18 +841,7 @@ function loadScript(url, callback)
                                                                 });
                                                             }break;
                                                         }
-                                                        // if($("#"+id+"_field_"+obj.Columnas[i].index).prop('nodeName') == 'INPUT')
-                                                        // {
-                                                        //     $("#" + id + "_field_" + obj.Columnas[i].index).val(data[i]);
-                                                        // }
-                                                        // else
-                                                        // {
-                                                        //     var campo =obj.Columnas[i].index;
-                                                        //     var dato = data[i];
-                                                        //     var url = obj.Columnas[i].type[1];
-                                                        //     methods.DropDownFill(id, campo,dato,url,accion);
-                                                        //
-                                                        // }
+
 
                                                     }
 
@@ -935,7 +936,16 @@ function loadScript(url, callback)
                                                                 html += "  <label for='"+id+"_field_"+obj.Columnas[i].index+"'>"+obj.Columnas[i].name+":</label>"
                                                                 html += "  <input readonly type='"+obj.Columnas[i].type[0]+"' class='form-control' name='" + id + "_field_" + obj.Columnas[i].index + "'  id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" >"
                                                                 html += "</div>"
-                                                            }
+                                                            }break;
+
+                                                            case "textarea":
+                                                            {
+                                                                var required =  (obj.Columnas[i].required == "true") ? 'required' : '';
+                                                                html += "<div class='form-group' style='"+display+"'>"
+                                                                html += "  <label for='"+id+"_field_"+obj.Columnas[i].index+"'>"+obj.Columnas[i].name+":</label>"
+                                                                html += "  <textarea   class='form-control' name='" + id + "_field_" + obj.Columnas[i].index + "'  id='"+id+"_field_"+obj.Columnas[i].index+"' style='"+obj.Columnas[i].style+"' maxlength='"+obj.Columnas[i].maxlength+"' " + required +" ></textarea>"
+                                                                html += "</div>"
+                                                            }break;
 			                                            }
 			                                        }
 			                                        /****/
@@ -956,6 +966,11 @@ function loadScript(url, callback)
 
                                                         switch($("#" + id + "_field_" + obj.Columnas[i].index).prop('nodeName'))
                                                         {
+                                                            case "INPUT":
+                                                            {
+                                                                $("#" + id + "_field_" + obj.Columnas[i].index).val(data[i]);
+                                                            }break;
+
                                                             case "SELECT":
                                                             {
                                                                 var campo = obj.Columnas[i].index;
@@ -966,6 +981,7 @@ function loadScript(url, callback)
 
                                                             case "TEXTAREA":
                                                             {
+                                                                $("#" + id + "_field_" + obj.Columnas[i].index).val(data[i]);
                                                                 var oldEditor = tinyMCE.get(id + "_field_" + obj.Columnas[i].index);
                                                                 if (oldEditor != undefined) {
                                                                     tinymce.remove(oldEditor);
@@ -976,6 +992,7 @@ function loadScript(url, callback)
                                                                     height: obj.Columnas[i].type[1],
                                                                     language: 'es',
                                                                     menubar: false,
+                                                                    readonly:1,
                                                                     plugins: [
                                                                         'advlist autolink lists link image charmap print preview anchor',
                                                                         'searchreplace visualblocks code fullscreen',

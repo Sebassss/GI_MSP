@@ -13,9 +13,9 @@ else
 
 //examino la página a mostrar y el inicio del registro a mostrar
 
-if(isset($_POST['page']))
+if(isset($_GET['page']))
 {
-	$pagina = $_POST["page"];
+	$pagina = $_GET["page"];
     if (!$pagina)
     {
     	$inicio = 0;

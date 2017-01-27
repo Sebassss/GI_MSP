@@ -2,9 +2,9 @@
 
 require_once "../../../core/db/class.conexion.php";
 
-if(isset($_POST['pagesize']))
+if(isset($_GET['pagesize']))
 {
-	$TAMANO_PAGINA = $_POST['pagesize'];
+	$TAMANO_PAGINA = $_GET['pagesize'];
 }
 else
 {
@@ -13,9 +13,9 @@ else
 
 //examino la página a mostrar y el inicio del registro a mostrar
 
-if(isset($_POST['page']))
+if(isset($_GET['page']))
 {
-	$pagina = $_POST["page"];
+	$pagina = $_GET["page"];
     if (!$pagina)
     {
     	$inicio = 0;

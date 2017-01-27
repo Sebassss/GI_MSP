@@ -2,10 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eac2c803-ff3f-4c81-b667-f1c2264b24c1" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/js/grid/Grid/inc/jquery.tinymce.min.js" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/background.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/css/ls.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/login/crud/check.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/login/login.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/db/mysql.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tinymce.zip" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/js/functions.js" afterPath="$PROJECT_DIR$/core/js/functions.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/js/grid/Grid/Grid.js" afterPath="$PROJECT_DIR$/core/js/grid/Grid/Grid.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/incidentes/crud/add.php" afterPath="$PROJECT_DIR$/pages/incidentes/crud/add.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/incidentes/crud/list.php" afterPath="$PROJECT_DIR$/pages/incidentes/crud/list.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/incidentes/incidentes.php" afterPath="$PROJECT_DIR$/pages/incidentes/incidentes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/usuarios/crud/list.php" afterPath="$PROJECT_DIR$/pages/usuarios/crud/list.php" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,72 +48,103 @@
       <file leaf-file-name="Grid.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/js/grid/Grid/Grid.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11">
-              <caret line="1111" column="54" selection-start-line="1111" selection-start-column="54" selection-end-line="1111" selection-end-column="54" />
+            <state relative-caret-position="172">
+              <caret line="328" column="34" selection-start-line="328" selection-start-column="34" selection-end-line="328" selection-end-column="34" />
               <folding>
-                <element signature="e#25214#64125#0" expanded="false" />
-                <marker date="1485514420338" expanded="true" signature="18161:18167" ph=" " />
-                <marker date="1485514420338" expanded="true" signature="21011:21019" ph="..." />
-                <marker date="1485514420338" expanded="true" signature="21340:21348" ph="..." />
-                <marker date="1485514420338" expanded="true" signature="21714:21722" ph="..." />
-                <marker date="1485514420338" expanded="true" signature="22046:22054" ph="..." />
-                <marker date="1485514420338" expanded="true" signature="22460:22468" ph="..." />
-                <marker date="1485514420338" expanded="true" signature="25534:25548" ph="..." />
-                <marker date="1485514420338" expanded="true" signature="26142:26172" ph="..." />
-                <marker date="1485514420338" expanded="true" signature="26324:26351" ph="..." />
-                <marker date="1485514420338" expanded="true" signature="38387:38401" ph="..." />
-                <marker date="1485514420338" expanded="true" signature="38945:38975" ph="..." />
-                <marker date="1485514420338" expanded="true" signature="39129:39156" ph="..." />
-                <marker date="1485514420338" expanded="true" signature="51993:52007" ph="..." />
-                <marker date="1485514420338" expanded="true" signature="52550:52580" ph="..." />
-                <marker date="1485514420338" expanded="true" signature="52734:52761" ph="..." />
+                <element signature="e#1406#1695#0" expanded="false" />
+                <element signature="e#1790#3283#0" expanded="false" />
+                <element signature="e#3328#3450#0" expanded="false" />
+                <marker date="1485530082836" expanded="true" signature="18458:18464" ph=" " />
+                <marker date="1485530082836" expanded="true" signature="21308:21316" ph="..." />
+                <marker date="1485530082836" expanded="true" signature="21637:21645" ph="..." />
+                <marker date="1485530082836" expanded="true" signature="22011:22019" ph="..." />
+                <marker date="1485530082836" expanded="true" signature="22343:22351" ph="..." />
+                <marker date="1485530082836" expanded="true" signature="22757:22765" ph="..." />
+                <marker date="1485530082836" expanded="true" signature="25831:25845" ph="..." />
+                <marker date="1485530082836" expanded="true" signature="26439:26469" ph="..." />
+                <marker date="1485530082836" expanded="true" signature="26621:26648" ph="..." />
+                <marker date="1485530082836" expanded="true" signature="38657:38671" ph="..." />
+                <marker date="1485530082836" expanded="true" signature="39215:39245" ph="..." />
+                <marker date="1485530082836" expanded="true" signature="39399:39426" ph="..." />
+                <marker date="1485530082836" expanded="true" signature="51664:51678" ph="..." />
+                <marker date="1485530082836" expanded="true" signature="52221:52251" ph="..." />
+                <marker date="1485530082836" expanded="true" signature="52405:52432" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="incidentes.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pages/incidentes/incidentes.php">
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/login/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+            <state relative-caret-position="34">
+              <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="list.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/incidentes/crud/list.php">
+      <file leaf-file-name="functions.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/js/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="63" column="13" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
+            <state relative-caret-position="511">
+              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="115" column="62" selection-start-line="115" selection-start-column="62" selection-end-line="115" selection-end-column="62" />
               <folding>
-                <marker date="1485444559028" expanded="true" signature="555:941" ph="select i.Inc... tbl_incidentes" />
-                <marker date="1485444559028" expanded="true" signature="1082:1489" ph="select i.Inc... tbl_incidentes" />
+                <element signature="e#109#193#0#PHP" expanded="false" />
+                <marker date="1485529802219" expanded="true" signature="4132:4184" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Estados.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/incidentes/crud/Estados.php">
+      <file leaf-file-name="check.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/login/crud/check.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="12" column="48" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="48" />
+            <state relative-caret-position="-106">
+              <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
               <folding>
-                <marker date="1485445034226" expanded="true" signature="189:246" ph="select Incid... tbl_incidenteestado" />
+                <marker date="1485528403449" expanded="true" signature="425:497" ph="select Email... tbl_usuarios" />
+                <marker date="1485528403449" expanded="true" signature="425:507" ph="select Email... tbl_usuarios" />
+                <marker date="1485528403449" expanded="true" signature="425:532" ph="select Email... tbl_usuarios" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Prioridad.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/incidentes/crud/Prioridad.php">
+      <file leaf-file-name="incidentes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/incidentes/incidentes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="12" column="87" selection-start-line="12" selection-start-column="87" selection-end-line="12" selection-end-column="87" />
+            <state relative-caret-position="1224">
+              <caret line="72" column="25" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="25" />
               <folding>
-                <marker date="1485445991163" expanded="true" signature="189:252" ph="select Incid... tbl_incidenteprioridad" />
+                <marker date="1485525044522" expanded="true" signature="16:145" ph="..." />
+                <marker date="1485525044522" expanded="true" signature="44:137" ph="..." />
+                <marker date="1485525044522" expanded="true" signature="180:3582" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/incidentes/crud/add.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="54" column="26" selection-start-line="53" selection-start-column="0" selection-end-line="54" selection-end-column="26" />
+              <folding>
+                <marker date="1485521863768" expanded="true" signature="744:953" ph="insert into tbl_incidentes... " />
+                <marker date="1485521863768" expanded="true" signature="982:1052" ph="select Nombr... tbl_incidenteprioridad" />
+                <marker date="1485521863768" expanded="true" signature="982:1053" ph="select Nombr... tbl_incidenteprioridad" />
+                <marker date="1485521863768" expanded="true" signature="1145:1210" ph="select Nombr... tbl_incidenteestado" />
               </folding>
             </state>
           </provider>
@@ -114,11 +158,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/core/db/class.conexion.php" />
         <option value="$PROJECT_DIR$/pages/usuarios/crud/add.php" />
         <option value="$PROJECT_DIR$/pages/usuarios/crud/del.php" />
-        <option value="$PROJECT_DIR$/pages/usuarios/crud/list.php" />
         <option value="$PROJECT_DIR$/pages/usuarios/usuarios.php" />
         <option value="$PROJECT_DIR$/pages/usuarios/crud/edit.php" />
         <option value="$PROJECT_DIR$/pages/permisos/crud/list.php" />
@@ -132,12 +174,19 @@
         <option value="$PROJECT_DIR$/pages/permisos/crud/del.php" />
         <option value="$PROJECT_DIR$/pages/permisos/permisos2.php" />
         <option value="$PROJECT_DIR$/pages/permisos/permisos.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/09a1f2ec-bdf0-4d21-a46e-e4ec3f6f3878/console.sql" />
-        <option value="$PROJECT_DIR$/pages/incidentes/crud/list.php" />
         <option value="$PROJECT_DIR$/pages/incidentes/crud/Estados.php" />
         <option value="$PROJECT_DIR$/pages/incidentes/crud/Prioridad.php" />
-        <option value="$PROJECT_DIR$/core/js/grid/Grid/Grid.js" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/09a1f2ec-bdf0-4d21-a46e-e4ec3f6f3878/console.sql" />
+        <option value="$PROJECT_DIR$/pages/incidentes/crud/add.php" />
         <option value="$PROJECT_DIR$/pages/incidentes/incidentes.php" />
+        <option value="$PROJECT_DIR$/pages/usuarios/crud/list.php" />
+        <option value="$PROJECT_DIR$/pages/incidentes/crud/list.php" />
+        <option value="$PROJECT_DIR$/login.php" />
+        <option value="$PROJECT_DIR$/pages/login/crud/check.php" />
+        <option value="$PROJECT_DIR$/core/js/functions.js" />
+        <option value="$PROJECT_DIR$/pages/login/login.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/core/js/grid/Grid/Grid.js" />
       </list>
     </option>
   </component>
@@ -229,10 +278,6 @@
               <option name="myItemId" value="pages" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="usuarios" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -244,175 +289,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="permisos" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GI_MSP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GI_MSP" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="permisos" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crud" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GI_MSP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GI_MSP" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="incidentes" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GI_MSP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GI_MSP" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="incidentes" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crud" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GI_MSP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GI_MSP" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GI_MSP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GI_MSP" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GI_MSP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GI_MSP" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="grid" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Grid" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GI_MSP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GI_MSP" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="grid" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Grid" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="inc" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GI_MSP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GI_MSP" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
+              <option name="myItemId" value="framework" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -429,6 +306,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\GI_MSP\pages\login" />
       <recent name="C:\wamp64\www\GI_MSP\pages\permisos" />
       <recent name="C:\wamp64\www\GI_MSP\pages\usuarios" />
     </key>
@@ -609,7 +487,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1485341418093</updated>
-      <workItem from="1485341419314" duration="36234000" />
+      <workItem from="1485341419314" duration="49525000" />
     </task>
     <task id="LOCAL-00001" summary="Actualizando Grid sobre todo">
       <created>1485346267810</created>
@@ -667,22 +545,29 @@
       <option name="project" value="LOCAL" />
       <updated>1485512519842</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Actualizando">
+      <created>1485514971119</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1485514971119</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36234000" />
+    <option name="totallyTimeSpent" value="49525000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1527559" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25826773" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22401172" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16617863" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2015748" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2015748" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -719,7 +604,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/core/js/grid/Grid/Grid.js</url>
-          <line>516</line>
+          <line>521</line>
           <properties />
         </line-breakpoint>
       </breakpoints>
@@ -732,27 +617,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../movilidadesMSP/app/controllers/abm_getUsuariosController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="44" column="32" selection-start-line="26" selection-start-column="2" selection-end-line="44" selection-end-column="32" />
-          <folding>
-            <marker date="1485172729001" expanded="true" signature="447:494" ph="delete from " />
-            <marker date="1485172729001" expanded="true" signature="1146:1231" ph="insert into Tbl_Recursos... " />
-            <marker date="1485172729001" expanded="true" signature="2137:2222" ph="select Recur... Tbl_Recursos" />
-            <marker date="1485172729001" expanded="true" signature="2366:2472" ph="select Recur... Tbl_Recursos" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/db/class.conexion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -788,27 +652,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="71" column="55" selection-start-line="71" selection-start-column="55" selection-end-line="71" selection-end-column="55" />
-          <folding>
-            <marker date="1485511714474" expanded="true" signature="4004:4056" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/usuarios/crud/list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="49" column="1" selection-start-line="49" selection-start-column="1" selection-end-line="49" selection-end-column="1" />
-          <folding>
-            <marker date="1485345789519" expanded="true" signature="555:629" ph="select Usuar... tbl_usuarios" />
-            <marker date="1485345789519" expanded="true" signature="770:865" ph="select Usuar... tbl_usuarios" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/usuarios/crud/edit.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -833,17 +676,6 @@
         <state relative-caret-position="34">
           <caret line="71" column="13" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/permisos/crud/add.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="23" column="54" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="54" />
-          <folding>
-            <marker date="1485439013564" expanded="true" signature="383:470" ph="insert into tbl_usuarios... " />
-            <marker date="1485439013564" expanded="true" signature="383:471" ph="insert into tbl_usuariosperfiles... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -918,33 +750,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/09a1f2ec-bdf0-4d21-a46e-e4ec3f6f3878/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="34" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/js/functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/incidentes/crud/list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="63" column="13" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
-          <folding>
-            <marker date="1485444559028" expanded="true" signature="555:941" ph="select i.Inc... tbl_incidentes" />
-            <marker date="1485444559028" expanded="true" signature="1082:1489" ph="select i.Inc... tbl_incidentes" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/incidentes/crud/Prioridad.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -965,35 +770,163 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/js/grid/Grid/Grid.js">
+    <entry file="file://$PROJECT_DIR$/pages/permisos/crud/add.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="538">
+          <caret line="44" column="32" selection-start-line="26" selection-start-column="2" selection-end-line="44" selection-end-column="32" />
+          <folding>
+            <marker date="1485439013564" expanded="true" signature="383:470" ph="insert into tbl_usuarios... " />
+            <marker date="1485439013564" expanded="true" signature="383:471" ph="insert into tbl_usuariosperfiles... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/db/mysql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-694">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/db/class.conexion.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="972">
+          <caret line="68" column="32" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../movilidadesMSP/app/controllers/abm_getUsuariosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1632">
+          <caret line="44" column="32" selection-start-line="26" selection-start-column="2" selection-end-line="44" selection-end-column="32" />
+          <folding>
+            <marker date="1485172729001" expanded="true" signature="447:494" ph="delete from " />
+            <marker date="1485172729001" expanded="true" signature="1146:1231" ph="insert into Tbl_Recursos... " />
+            <marker date="1485172729001" expanded="true" signature="2137:2222" ph="select Recur... Tbl_Recursos" />
+            <marker date="1485172729001" expanded="true" signature="2366:2472" ph="select Recur... Tbl_Recursos" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/09a1f2ec-bdf0-4d21-a46e-e4ec3f6f3878/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11">
-          <caret line="1111" column="54" selection-start-line="1111" selection-start-column="54" selection-end-line="1111" selection-end-column="54" />
-          <folding>
-            <element signature="e#25214#64125#0" expanded="false" />
-            <marker date="1485514420338" expanded="true" signature="18161:18167" ph=" " />
-            <marker date="1485514420338" expanded="true" signature="21011:21019" ph="..." />
-            <marker date="1485514420338" expanded="true" signature="21340:21348" ph="..." />
-            <marker date="1485514420338" expanded="true" signature="21714:21722" ph="..." />
-            <marker date="1485514420338" expanded="true" signature="22046:22054" ph="..." />
-            <marker date="1485514420338" expanded="true" signature="22460:22468" ph="..." />
-            <marker date="1485514420338" expanded="true" signature="25534:25548" ph="..." />
-            <marker date="1485514420338" expanded="true" signature="26142:26172" ph="..." />
-            <marker date="1485514420338" expanded="true" signature="26324:26351" ph="..." />
-            <marker date="1485514420338" expanded="true" signature="38387:38401" ph="..." />
-            <marker date="1485514420338" expanded="true" signature="38945:38975" ph="..." />
-            <marker date="1485514420338" expanded="true" signature="39129:39156" ph="..." />
-            <marker date="1485514420338" expanded="true" signature="51993:52007" ph="..." />
-            <marker date="1485514420338" expanded="true" signature="52550:52580" ph="..." />
-            <marker date="1485514420338" expanded="true" signature="52734:52761" ph="..." />
-          </folding>
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="17" selection-end-column="55" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/incidentes/incidentes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+        <state relative-caret-position="1224">
+          <caret line="72" column="25" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="25" />
+          <folding>
+            <marker date="1485525044522" expanded="true" signature="16:145" ph="..." />
+            <marker date="1485525044522" expanded="true" signature="44:137" ph="..." />
+            <marker date="1485525044522" expanded="true" signature="180:3582" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/usuarios/crud/list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+          <folding>
+            <marker date="1485525666479" expanded="true" signature="553:627" ph="select Usuar... tbl_usuarios" />
+            <marker date="1485525666479" expanded="true" signature="768:863" ph="select Usuar... tbl_usuarios" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/incidentes/crud/list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <marker date="1485525692448" expanded="true" signature="551:937" ph="select i.Inc... tbl_incidentes" />
+            <marker date="1485525692448" expanded="true" signature="1078:1485" ph="select i.Inc... tbl_incidentes" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/incidentes/crud/add.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="54" column="26" selection-start-line="53" selection-start-column="0" selection-end-line="54" selection-end-column="26" />
+          <folding>
+            <marker date="1485521863768" expanded="true" signature="744:953" ph="insert into tbl_incidentes... " />
+            <marker date="1485521863768" expanded="true" signature="982:1052" ph="select Nombr... tbl_incidenteprioridad" />
+            <marker date="1485521863768" expanded="true" signature="982:1053" ph="select Nombr... tbl_incidenteprioridad" />
+            <marker date="1485521863768" expanded="true" signature="1145:1210" ph="select Nombr... tbl_incidenteestado" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/login/crud/check.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-106">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+          <folding>
+            <marker date="1485528403449" expanded="true" signature="425:497" ph="select Email... tbl_usuarios" />
+            <marker date="1485528403449" expanded="true" signature="425:507" ph="select Email... tbl_usuarios" />
+            <marker date="1485528403449" expanded="true" signature="425:532" ph="select Email... tbl_usuarios" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/login/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="115" column="62" selection-start-line="115" selection-start-column="62" selection-end-line="115" selection-end-column="62" />
+          <folding>
+            <element signature="e#109#193#0#PHP" expanded="false" />
+            <marker date="1485529802219" expanded="true" signature="4132:4184" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/js/grid/Grid/Grid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="328" column="34" selection-start-line="328" selection-start-column="34" selection-end-line="328" selection-end-column="34" />
+          <folding>
+            <element signature="e#1406#1695#0" expanded="false" />
+            <element signature="e#1790#3283#0" expanded="false" />
+            <element signature="e#3328#3450#0" expanded="false" />
+            <marker date="1485530082836" expanded="true" signature="18458:18464" ph=" " />
+            <marker date="1485530082836" expanded="true" signature="21308:21316" ph="..." />
+            <marker date="1485530082836" expanded="true" signature="21637:21645" ph="..." />
+            <marker date="1485530082836" expanded="true" signature="22011:22019" ph="..." />
+            <marker date="1485530082836" expanded="true" signature="22343:22351" ph="..." />
+            <marker date="1485530082836" expanded="true" signature="22757:22765" ph="..." />
+            <marker date="1485530082836" expanded="true" signature="25831:25845" ph="..." />
+            <marker date="1485530082836" expanded="true" signature="26439:26469" ph="..." />
+            <marker date="1485530082836" expanded="true" signature="26621:26648" ph="..." />
+            <marker date="1485530082836" expanded="true" signature="38657:38671" ph="..." />
+            <marker date="1485530082836" expanded="true" signature="39215:39245" ph="..." />
+            <marker date="1485530082836" expanded="true" signature="39399:39426" ph="..." />
+            <marker date="1485530082836" expanded="true" signature="51664:51678" ph="..." />
+            <marker date="1485530082836" expanded="true" signature="52221:52251" ph="..." />
+            <marker date="1485530082836" expanded="true" signature="52405:52432" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/js/functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding />
         </state>
       </provider>

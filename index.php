@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!isset($_SESSION['UsuarioID']))
+{
+    header("location: pages/login/login.php");
+}
 /**
  * Created by PhpStorm.
  * User: Calopsia
@@ -8,7 +13,6 @@
 /**
 * Incluyo las librerias necesarias
 */
-
 include('core/db/db.inc.php');
 include('core/db/class.conexion.php');
 include('core/db/class.permisos.php');
@@ -103,15 +107,15 @@ $obj_permiso->desconectar();
                                     <img src="img/64-64.jpg" alt="" class="img-rounded" />
                                 </a>
                                 <div class="media-body">
-                                    <h4 class="media-heading">Jhon Deo Alex </h4>
+                                    <h4 class="media-heading"><?php echo $_SESSION['Nombre']; ?></h4>
                                     <h5>Developer & Designer</h5>
                                 </div>
                             </div>
                             <hr />
-                            <h5><strong>Personal Bio : </strong></h5>
-                            Anim pariatur cliche reprehen derit.
+                            <h5><strong>E-Mail : </strong></h5>
+                                <?php echo $_SESSION['Email']; ?>
                             <hr />
-                            <a href="#" class="btn btn-info btn-sm">Full Profile</a>&nbsp; <a href="login.html" class="btn btn-danger btn-sm">Logout</a>
+                            <a href="#" class="btn btn-info btn-sm">Full Profile</a>&nbsp; <a href="pages/login/login.php" class="btn btn-danger btn-sm">Logout</a>
                         </div>
                     </li>
                 </ul>
@@ -132,7 +136,7 @@ $obj_permiso->desconectar();
                         <ul class="nav navbar-nav">';
                        /*Genero Menu Segun usuario*/
                         $obj_menu = new Menu();
-                        $obj_menu->GeneraMenu(0,1,3);
+                        $obj_menu->GeneraMenu(0,1,$_SESSION['UsuarioID']);
                         $obj_menu->desconectar();
                         echo '</ul></div><!-- /.navbar-collapse -->';
 
@@ -156,7 +160,7 @@ $obj_permiso->desconectar();
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        &copy; 2016 Area de Sistema Salud Pública | By  Sebas: <a href="#" target="_blank">pseba20@gmail.com</a>
+                        &copy; 2017 Area de Sistema Ministerio de Salud Pública | <a href="mailto:soporte_msp@gmail.com" target="_blank">soporte_msp@gmail.com</a>
                     </div>
                 </div>
             </div>
