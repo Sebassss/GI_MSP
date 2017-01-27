@@ -624,9 +624,6 @@ function loadScript(url, callback)
 		                                        html += '</div>';  // modalWindow
 		                                        $('body').append(html);
 
-
-
-
                                                 for(i=0;i<obj.Columnas.length;i++)
                                                 {
                                                     $("#" + id + "_field_" + obj.Columnas[i].index).attr('autocomplete','new-password')
@@ -794,20 +791,56 @@ function loadScript(url, callback)
 
 	                                        		for(i=0; i<data.length;i++)
 	                                        		{
-                                                        console.log($("#" + id + "_field_" + obj.Columnas[i].index).val(data[i]))
-
-	                                        		    if($("#"+id+"_field_"+obj.Columnas[i].index).prop('nodeName') == 'INPUT')
+                                                        //console.log($("#" + id + "_field_" + obj.Columnas[i].index).val(data[i]))
+                                                        switch($("#" + id + "_field_" + obj.Columnas[i].index).prop('nodeName'))
                                                         {
-                                                            $("#" + id + "_field_" + obj.Columnas[i].index).val(data[i]);
-                                                        }
-                                                        else
-                                                        {
-                                                            var campo =obj.Columnas[i].index;
-                                                            var dato = data[i];
-                                                            var url = obj.Columnas[i].type[1];
-                                                            methods.DropDownFill(id, campo,dato,url,accion);
+                                                            case "SELECT":
+                                                            {
+                                                                var campo = obj.Columnas[i].index;
+                                                                var dato =  data[i];
+                                                                var url = obj.Columnas[i].type[1];
+                                                                methods.DropDownFill(id, campo, dato, url, accion);
+                                                            }break;
 
+                                                            case "TEXTAREA":
+                                                            {
+                                                                var oldEditor = tinyMCE.get(id + "_field_" + obj.Columnas[i].index);
+                                                                if (oldEditor != undefined) {
+                                                                    tinymce.remove(oldEditor);
+                                                                }
+
+                                                                tinymce.init({
+                                                                    selector: "textarea#"+ id + "_field_" + obj.Columnas[i].index,
+                                                                    height: obj.Columnas[i].type[1],
+                                                                    language: 'es',
+                                                                    menubar: false,
+                                                                    plugins: [
+                                                                        'advlist autolink lists link image charmap print preview anchor',
+                                                                        'searchreplace visualblocks code fullscreen',
+                                                                        'insertdatetime media table contextmenu paste code'
+                                                                    ],
+                                                                    toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+                                                                });
+
+                                                                $(document).on('focusin', function(e) {
+                                                                    if ($(e.target).closest(".mce-window").length) {
+                                                                        e.stopImmediatePropagation();
+                                                                    }
+                                                                });
+                                                            }break;
                                                         }
+                                                        // if($("#"+id+"_field_"+obj.Columnas[i].index).prop('nodeName') == 'INPUT')
+                                                        // {
+                                                        //     $("#" + id + "_field_" + obj.Columnas[i].index).val(data[i]);
+                                                        // }
+                                                        // else
+                                                        // {
+                                                        //     var campo =obj.Columnas[i].index;
+                                                        //     var dato = data[i];
+                                                        //     var url = obj.Columnas[i].type[1];
+                                                        //     methods.DropDownFill(id, campo,dato,url,accion);
+                                                        //
+                                                        // }
 
                                                     }
 
@@ -920,19 +953,59 @@ function loadScript(url, callback)
 
                                                     for(i=0;i<data.length;i++)
                                                     {
-                                                        if($("#"+id+"_field_"+obj.Columnas[i].index).prop('nodeName') == 'INPUT')
-                                                        {
-                                                            $("#" + id + "_field_" + obj.Columnas[i].index).val(data[i]);
-                                                        }
-                                                        else
-                                                        {
 
-                                                            var campo =obj.Columnas[i].index;
-                                                            var dato = data[i];
-                                                            var url = obj.Columnas[i].type[1];
-                                                            methods.DropDownFill(id, campo,dato,url,accion);
+                                                        switch($("#" + id + "_field_" + obj.Columnas[i].index).prop('nodeName'))
+                                                        {
+                                                            case "SELECT":
+                                                            {
+                                                                var campo = obj.Columnas[i].index;
+                                                                var dato =  data[i];
+                                                                var url = obj.Columnas[i].type[1];
+                                                                methods.DropDownFill(id, campo, dato, url, accion);
+                                                            }break;
 
+                                                            case "TEXTAREA":
+                                                            {
+                                                                var oldEditor = tinyMCE.get(id + "_field_" + obj.Columnas[i].index);
+                                                                if (oldEditor != undefined) {
+                                                                    tinymce.remove(oldEditor);
+                                                                }
+
+                                                                tinymce.init({
+                                                                    selector: "textarea#"+ id + "_field_" + obj.Columnas[i].index,
+                                                                    height: obj.Columnas[i].type[1],
+                                                                    language: 'es',
+                                                                    menubar: false,
+                                                                    plugins: [
+                                                                        'advlist autolink lists link image charmap print preview anchor',
+                                                                        'searchreplace visualblocks code fullscreen',
+                                                                        'insertdatetime media table contextmenu paste code'
+                                                                    ],
+                                                                    toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+                                                                });
+
+                                                                $(document).on('focusin', function(e) {
+                                                                    if ($(e.target).closest(".mce-window").length) {
+                                                                        e.stopImmediatePropagation();
+                                                                    }
+                                                                });
+                                                            }break;
                                                         }
+
+
+                                                        // if($("#"+id+"_field_"+obj.Columnas[i].index).prop('nodeName') == 'INPUT')
+                                                        // {
+                                                        //     $("#" + id + "_field_" + obj.Columnas[i].index).val(data[i]);
+                                                        // }
+                                                        // else
+                                                        // {
+                                                        //
+                                                        //     var campo =obj.Columnas[i].index;
+                                                        //     var dato = data[i];
+                                                        //     var url = obj.Columnas[i].type[1];
+                                                        //     methods.DropDownFill(id, campo,dato,url,accion);
+                                                        //
+                                                        // }
 
                                                     }
 
@@ -1011,6 +1084,7 @@ function loadScript(url, callback)
 								            }         
 								            methods.wanimate(id+"_CrudModal");
 	                                        /*fin animacion aleatoria*/
+                                            $("#"+id+"_CrudModal").find('.modal-dialog').css({width:'80%', height:'auto','max-height':'100%'});
 	                                        $("#"+id+"_CrudModal").modal();
 	                                        $("#"+id+"_CrudModal").modal('show');
 	                                        $("#"+id+"_CrudModal").on('hidden.bs.modal', function (e)
@@ -1037,7 +1111,6 @@ function loadScript(url, callback)
 						{
 							loadScript("core/js/grid/Grid/inc/tableexport.js",function()
 							{
-
 								loadScript("core/js/grid/Grid/inc/jquery.base64.js",function()
 								{
                                     loadScript("core/js/grid/Grid/inc/tinymce.min.js",function()

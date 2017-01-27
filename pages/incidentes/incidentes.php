@@ -28,9 +28,9 @@
             {index : "IncidenteEstadoID", name: "Estado",editable: "true", visible: "true", type: ["dropdown", 'pages/incidentes/crud/Estados.php'], maxlength: "10", required: "true"}];
 
 
-        var edit_options ={	url: "pages/usuarios/crud/edit.php",titulo: "Editar",method : "POST" };
+        var edit_options ={	url: "pages/incidentes/crud/edit.php",titulo: "Editar",method : "POST" };
         var add_options ={ url: "pages/incidentes/crud/add.php",titulo: "Agregar",method : "POST" };
-        var del_options ={ url: "pages/usuarios/crud/del.php",titulo: "Eliminar",method : "POST"};
+        var del_options ={ url: "pages/incidentes/crud/del.php",titulo: "Eliminar",method : "POST"};
 
         var datasource ={
             url: "pages/incidentes/crud/list.php",
@@ -54,7 +54,8 @@
             animate: 1,
             datasource: datasource,
             export2XLS: "false",
-            Visible : "false"
+            Visible : "false",
+            ModalWidth : "80%"
         });
 
 
