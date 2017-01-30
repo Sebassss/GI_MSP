@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-01-2017 a las 18:03:26
+-- Tiempo de generación: 30-01-2017 a las 01:06:49
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 7.0.10
 
@@ -19,6 +19,55 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `gi_msp`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_categorias`
+--
+
+CREATE TABLE `tbl_categorias` (
+  `CategoriaID` int(11) NOT NULL,
+  `Parent` int(11) NOT NULL,
+  `Nombre` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tbl_categorias`
+--
+
+INSERT INTO `tbl_categorias` (`CategoriaID`, `Parent`, `Nombre`) VALUES
+(1, 0, 'Sistemas'),
+(2, 1, 'GeDoc'),
+(3, 1, 'Cartas Médicas'),
+(4, 1, 'Mesa de Entrada'),
+(5, 1, 'Cronos'),
+(6, 1, 'Otro'),
+(7, 0, 'Hardware'),
+(8, 7, 'PC'),
+(9, 7, 'Impresora/s'),
+(10, 7, 'Otro'),
+(11, 0, 'Otro'),
+(12, 0, 'Internet');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_dependencias`
+--
+
+CREATE TABLE `tbl_dependencias` (
+  `DependenciaID` int(11) NOT NULL,
+  `UsuarioID` int(11) NOT NULL,
+  `Nombre` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tbl_dependencias`
+--
+
+INSERT INTO `tbl_dependencias` (`DependenciaID`, `UsuarioID`, `Nombre`) VALUES
+(1, 3, 'Desarrollo');
 
 -- --------------------------------------------------------
 
@@ -70,12 +119,20 @@ INSERT INTO `tbl_incidenteprioridad` (`IncidentePrioridadID`, `Nombre`) VALUES
 CREATE TABLE `tbl_incidentes` (
   `IncidenteID` int(11) NOT NULL,
   `UsuarioID` int(11) NOT NULL,
+  `CategoriaID` int(11) NOT NULL,
   `Titulo` varchar(200) NOT NULL,
   `Detalles` longtext NOT NULL,
   `IncidenteEstadoID` int(11) NOT NULL,
   `IncidentePrioridadID` int(11) NOT NULL,
   `FechaRegistro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tbl_incidentes`
+--
+
+INSERT INTO `tbl_incidentes` (`IncidenteID`, `UsuarioID`, `CategoriaID`, `Titulo`, `Detalles`, `IncidenteEstadoID`, `IncidentePrioridadID`, `FechaRegistro`) VALUES
+(1, 3, 0, 'Titulo', '<p>Detalle</p>', 1, 1, '2017-01-27 15:17:55');
 
 -- --------------------------------------------------------
 
@@ -122,27 +179,8 @@ INSERT INTO `tbl_perfilesrecursos` (`Consultar`, `Agregar`, `Editar`, `Eliminar`
 (0, 0, 0, 0, 3, 3),
 (0, 0, 0, 0, 4, 3),
 (0, 0, 0, 0, 5, 3),
-(0, 0, 0, 0, 5, 3);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbl_personas`
---
-
-CREATE TABLE `tbl_personas` (
-  `PersonaID` int(10) NOT NULL,
-  `Nombre` varchar(50) DEFAULT NULL,
-  `Apellido` varchar(50) DEFAULT NULL,
-  `Documento` int(8) DEFAULT NULL,
-  `Sexo` longblob,
-  `Mail` varchar(255) DEFAULT NULL,
-  `Domicilio` varchar(255) DEFAULT NULL,
-  `LocalidadID` int(10) DEFAULT NULL,
-  `ProvinciaID` int(10) NOT NULL,
-  `DepartamentoID` int(10) DEFAULT NULL,
-  `FechaNacimiento` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+(0, 0, 0, 0, 5, 3),
+(0, 0, 0, 0, 6, 3);
 
 -- --------------------------------------------------------
 
@@ -169,7 +207,8 @@ INSERT INTO `tbl_recursos` (`RecursoID`, `Nombre`, `FechaRegistro`, `Parent`, `L
 (2, 'Usuarios', '2017-01-11 00:00:00', 0, '', '', 1),
 (3, 'Usuarios', '2017-01-11 00:00:00', 2, 'javascript:loadPage(\'pages/usuarios/usuarios.php\');', NULL, 1),
 (4, 'Permisos', '2017-01-11 00:00:00', 2, 'javascript:loadPage(\'pages/permisos/permisos.php\');', NULL, 2),
-(5, 'Incidentes', '2017-01-11 00:00:00', 0, 'javascript:loadPage(\'pages/incidentes/incidentes.php\');', NULL, 2);
+(5, 'Incidentes', '2017-01-11 00:00:00', 0, 'javascript:loadPage(\'pages/incidentes/incidentes.php\');', NULL, 2),
+(6, 'Configuraciones', '2017-01-11 00:00:00', 0, 'javascript:loadPage(\'pages/configuraciones/configuraciones.php\');', NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -221,6 +260,18 @@ INSERT INTO `tbl_usuariosperfiles` (`UsuarioID`, `PerfilID`) VALUES
 --
 
 --
+-- Indices de la tabla `tbl_categorias`
+--
+ALTER TABLE `tbl_categorias`
+  ADD PRIMARY KEY (`CategoriaID`);
+
+--
+-- Indices de la tabla `tbl_dependencias`
+--
+ALTER TABLE `tbl_dependencias`
+  ADD PRIMARY KEY (`DependenciaID`);
+
+--
 -- Indices de la tabla `tbl_incidenteestado`
 --
 ALTER TABLE `tbl_incidenteestado`
@@ -243,12 +294,6 @@ ALTER TABLE `tbl_incidentes`
 --
 ALTER TABLE `tbl_perfiles`
   ADD PRIMARY KEY (`PerfilID`);
-
---
--- Indices de la tabla `tbl_personas`
---
-ALTER TABLE `tbl_personas`
-  ADD PRIMARY KEY (`PersonaID`);
 
 --
 -- Indices de la tabla `tbl_recursos`
@@ -274,6 +319,16 @@ ALTER TABLE `tbl_usuariosperfiles`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `tbl_categorias`
+--
+ALTER TABLE `tbl_categorias`
+  MODIFY `CategoriaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT de la tabla `tbl_dependencias`
+--
+ALTER TABLE `tbl_dependencias`
+  MODIFY `DependenciaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT de la tabla `tbl_incidenteestado`
 --
 ALTER TABLE `tbl_incidenteestado`
@@ -287,17 +342,12 @@ ALTER TABLE `tbl_incidenteprioridad`
 -- AUTO_INCREMENT de la tabla `tbl_incidentes`
 --
 ALTER TABLE `tbl_incidentes`
-  MODIFY `IncidenteID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IncidenteID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `tbl_perfiles`
 --
 ALTER TABLE `tbl_perfiles`
   MODIFY `PerfilID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'llave primaria de la tabla', AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT de la tabla `tbl_personas`
---
-ALTER TABLE `tbl_personas`
-  MODIFY `PersonaID` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `tbl_usuarios`
 --

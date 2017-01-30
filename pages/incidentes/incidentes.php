@@ -27,11 +27,13 @@
 
         $.ajax(
             {
+                //205050098 mio
+                //-1001099774757 GrupoID
                 url: 'https://api.telegram.org/bot251753439:AAHcySu-8c062FLT7cq2ovx7JdUrpb4418E/sendMessage',
-                data : {chat_id:"-1001099774757", text: mensaje},
-                type: 'json',
-                method: 'post',
-                dataType: 'application/x-www-form-urlencoded; UTF-8',
+                data : {chat_id:"205050098", text: mensaje},
+                type: 'post',
+                dataType: "json",
+                contentType:"application/x-www-form-urlencoded; charset=UTF-8",
 
                 success: function(data)
                 {
@@ -58,6 +60,7 @@
         var colheaders = [
             {index : "IncidenteID", name: "Incidente", editable: "false",  visible: "false", type:[ "text"],placeholder:"", maxlength: "10", required: "false" },
             {index : "UsuarioID", name: "Usuario",editable: "true", visible: "true", type: ["text"], maxlength: "25", required: "false" },
+            {index : "CategoriaID", name: "Categoria",editable: "true", visible: "false", type: ["dropdown",'pages/incidentes/crud/Categorias.php'], maxlength: "10", required: "true"},
             {index : "Titulo", name: "Titulo",editable: "true", visible: "true", type: ["text"], maxlength: "50", required: "true"},
             {index : "Detalles", name: "Detalles",editable: "true", visible: "false", type: ["textarea","300"], maxlength: "10", required: "true"},
             {index : "IncidentePrioridadID", name: "Prioridad",editable: "true", visible: "false", type: ["dropdown",'pages/incidentes/crud/Prioridad.php'], maxlength: "10", required: "true"},

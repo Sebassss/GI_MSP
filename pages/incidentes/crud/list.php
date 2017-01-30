@@ -1,4 +1,7 @@
 <?php
+session_start();
+
+
 
 require_once "../../../core/db/class.conexion.php";
 
@@ -36,21 +39,25 @@ else
 
 $db = new Conexion();
 
-$consulta = $db->query("select i.IncidenteID,
-       u.UsuarioID,
-       i.Titulo,
-       i.Detalles,
-       ip.IncidentePrioridadID,
-       ie.IncidenteEstadoID
-from tbl_incidentes i
-  left join tbl_incidenteprioridad ip on ip.IncidentePrioridadID = i.IncidentePrioridadID
-  left join tbl_incidenteestado ie on ie.IncidenteEstadoID = i.IncidenteEstadoID
-  left join tbl_usuarios u on u.UsuarioID = i.UsuarioID");
+$consulta = $db->query("
+                        select i.IncidenteID,
+                               c.CategoriaID,
+                               u.UsuarioID,
+                               i.Titulo,
+                               i.Detalles,
+                               ip.IncidentePrioridadID,
+                               ie.IncidenteEstadoID
+                        from tbl_incidentes i
+                          left join tbl_incidenteprioridad ip on ip.IncidentePrioridadID = i.IncidentePrioridadID
+                          left join tbl_incidenteestado ie on ie.IncidenteEstadoID = i.IncidenteEstadoID
+                          left join tbl_usuarios u on u.UsuarioID = i.UsuarioID
+                          left join tbl_categorias c on c.CategoriaID = i.CategoriaID");
 $num_total_registros = $db->num_rows($consulta);
 $total_paginas = ceil($num_total_registros / $TAMANO_PAGINA);
 
 
 $consulta = $db->query("select i.IncidenteID,
+       c.CategoriaID,
        u.UsuarioID,
        i.Titulo,
        i.Detalles,
@@ -59,7 +66,8 @@ $consulta = $db->query("select i.IncidenteID,
 from tbl_incidentes i
   left join tbl_incidenteprioridad ip on ip.IncidentePrioridadID = i.IncidentePrioridadID
   left join tbl_incidenteestado ie on ie.IncidenteEstadoID = i.IncidenteEstadoID
-  left join tbl_usuarios u on u.UsuarioID = i.UsuarioID limit ". $inicio. ",". $TAMANO_PAGINA.";");
+  left join tbl_usuarios u on u.UsuarioID = i.UsuarioID
+  left join tbl_categorias c on c.CategoriaID = i.CategoriaID limit ". $inicio. ",". $TAMANO_PAGINA.";");
 
 $x = array();
 
